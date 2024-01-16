@@ -1,5 +1,7 @@
 # Hotel Booking System Project
 
+![Hotel Image](https://i.ibb.co/pJggHjz/hotel-image.jpg)
+
 ## Overview
 
 Develop a Hotel Booking System to streamline room reservations for users and provide administrators with tools for efficient room management.
