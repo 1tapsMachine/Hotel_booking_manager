@@ -8,9 +8,9 @@ Develop a comprehensive Project Management System to facilitate efficient projec
 ## Diagrams :
 
 1. **Use case :**
-[url=https://ibb.co/G9M684k][img]https://i.ibb.co/8bxCfL2/useCase.jpg[/img][/url]
+https://ibb.co/G9M684k
 2.   **Class Diagram :**
-
+https://ibb.co/z80g5y4
 ## Key Features
 
 1. **User Authentication:**
