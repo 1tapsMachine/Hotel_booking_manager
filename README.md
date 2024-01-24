@@ -8,9 +8,9 @@ Develop a comprehensive Project Management System to facilitate efficient projec
 ## Diagrams :
 
 1. **Use case :**
-   - ![useCase](WhatsApp Image 2024-01-24 at 12.20.57 PM.jpeg)
-   **Class Diagram :**
-   - ![classDiagram](WhatsApp Image 2024-01-24 at 12.20.18 PM.jpeg)
+   - [useCase](./WhatsApp Image 2024-01-24 at 12.20.57 PM.jpeg)
+2.   **Class Diagram :**
+   - [classDiagram](./WhatsApp Image 2024-01-24 at 12.20.18 PM.jpeg)
 ## Key Features
 
 1. **User Authentication:**
