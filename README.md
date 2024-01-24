@@ -4,6 +4,13 @@
 
 Develop a comprehensive Project Management System to facilitate efficient project planning, execution, and collaboration. The system will integrate React for the frontend, Laravel for the backend, and provide a seamless user experience for project managers and team members.
 
+
+## Diagrams :
+
+1. **Use case :**
+   - ![useCase](WhatsApp Image 2024-01-24 at 12.20.57 PM.jpeg)
+   **Class Diagram :**
+   - ![classDiagram](WhatsApp Image 2024-01-24 at 12.20.18 PM.jpeg)
 ## Key Features
 
 1. **User Authentication:**
