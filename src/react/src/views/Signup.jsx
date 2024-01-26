@@ -21,6 +21,7 @@ export default function Login() {
         axiosClient
             .post("/signup", payload)
             .then(({ data }) => {
+                console.log(data);
                 setUser(data.user);
                 setToken(data.token);
             })
@@ -39,7 +40,7 @@ export default function Login() {
                     {errors && (
                         <div className="alert">
                             {Object.keys(errors).map((key) => {
-                                return (<p key={key}>{errors[key][0]}</p>);
+                                return <p key={key}>{errors[key][0]}</p>;
                             })}
                         </div>
                     )}
