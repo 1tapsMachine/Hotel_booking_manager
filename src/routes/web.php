@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PagesController::class,'home']);
-Route::get('/login',[PagesController::class,'login']);
+Route::get('/', function(){
+	return(view('welcome'));
+});
