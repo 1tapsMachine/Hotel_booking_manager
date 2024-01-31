@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProvider";
 
-export default function Login() {
+export default function Signup() {
     const nameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -20,17 +20,19 @@ export default function Login() {
         };
         axiosClient
             .post("/signup", payload)
-            .then(({ data }) => {
+            .then((data) => {
                 console.log(data);
                 setUser(data.user);
                 setToken(data.token);
             })
             .catch((err) => {
+                console.log(err);
                 const response = err.response;
                 if (response && response.status === 422) {
                     setErrors(response.data.errors);
                 }
             });
+            console.log('exited');
     };
     return (
         <div className="login-signup-form animated fadeInDown">
