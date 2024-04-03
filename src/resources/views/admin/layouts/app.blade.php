@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ETMS- @yield('title')</title>
+    <title>Agile Sphere- @yield('title')</title>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
     <link href="{{ asset('main.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -69,13 +69,11 @@
                                             class="dropdown-menu dropdown-menu-right">
                                             <button type="button" tabindex="0" class="dropdown-item">User
                                                 Account</button>
-                                            <button type="button" tabindex="0"
-                                                class="dropdown-item">Settings</button>
+                                            <button type="button" tabindex="0" class="dropdown-item">Settings</button>
                                             <h6 tabindex="-1" class="dropdown-header">Header</h6>
                                             <button type="button" tabindex="0" class="dropdown-item">Actions</button>
                                             <div tabindex="-1" class="dropdown-divider"></div>
-                                            <button type="button" tabindex="0"
-                                                class="dropdown-item">Dividers</button>
+                                            <button type="button" tabindex="0" class="dropdown-item">Dividers</button>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +136,7 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Dashboards</li>
                             <li>
-                                <a href="index.html" class="mm-active">
+                                <a href="/admin/dashboard" class="mm-active">
                                     <i class="metismenu-icon pe-7s-rocket"></i>
                                     Dashboard
                                 </a>
@@ -209,7 +207,7 @@
                                 </ul>
                             </li>
 
-                             <li>
+                            <li>
                                 <a href="#">
                                     <i class="metismenu-icon pe-7s-diamond"></i>
                                     Admin

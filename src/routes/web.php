@@ -8,7 +8,9 @@ use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\TaskController;
 use Illuminate\Support\Facades\Route;
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::prefix('admin')->group(function () {
     Route::middleware(['guest:admin'])->group(function () {
         Route::get('/login', [LoginController::class, 'index'])->name('admin.auth.login');
