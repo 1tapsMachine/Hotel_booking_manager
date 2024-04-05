@@ -57,6 +57,10 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/admin/delete', [AdminController::class, 'delete'])->name('admin.admin.delete');
         Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.admin.edit');
         Route::post('/admin/update', [AdminController::class, 'update'])->name('admin.admin.update');
+
+
+        // logout
+        Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
     });
 });
 
