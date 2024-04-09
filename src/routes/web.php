@@ -18,7 +18,6 @@ Route::get('/', function () {
 Route::get('/logout', [LoginController::class, 'logout']);
 
 
-
 // Admin routes
 Route::prefix('admin')->group(function () {
     Route::middleware(['guest:admin'])->group(function () {
