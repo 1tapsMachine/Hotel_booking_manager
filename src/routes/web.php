@@ -11,13 +11,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+// logout
+Route::get('/logout', [LoginController::class, 'logout']);
+
+
+
+// Admin routes
 Route::prefix('admin')->group(function () {
     Route::middleware(['guest:admin'])->group(function () {
         Route::get('/login', [LoginController::class, 'index'])->name('admin.auth.login');
         Route::post('/login/post', [LoginController::class, 'login'])->name('admin.login');
     });
 });
-
 Route::middleware(['auth:admin'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -57,10 +65,5 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/admin/delete', [AdminController::class, 'delete'])->name('admin.admin.delete');
         Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.admin.edit');
         Route::post('/admin/update', [AdminController::class, 'update'])->name('admin.admin.update');
-
-
-        // logout
-        Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
     });
 });
-
