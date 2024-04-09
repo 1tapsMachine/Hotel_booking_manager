@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,24 +10,20 @@
       font-family: Arial, sans-serif;
       background-color: #f8f9fa;
     }
-
     .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 50px 20px;
       text-align: center;
     }
-
     h1 {
       font-size: 36px;
       margin-bottom: 30px;
     }
-
     p {
       font-size: 18px;
       margin-bottom: 40px;
     }
-
     .login-btn {
       display: inline-block;
       padding: 10px 20px;
@@ -38,25 +33,20 @@
       border-radius: 5px;
       transition: background-color 0.3s ease;
     }
-
     .login-btn:hover {
       background-color: #0056b3;
     }
-
     .feature {
       margin-bottom: 50px;
     }
-
     .feature img {
       width: 100%;
       max-width: 200px;
       border-radius: 10px;
     }
-
     .feature h3 {
       margin-top: 20px;
     }
-
     .footer {
       position: fixed;
       bottom: 0;
@@ -66,26 +56,22 @@
       padding: 10px 0;
       text-align: center;
     }
-
-    .containernav {
+    .container-nav{
       display: flex;
-      justify-content: space-around;
-      align-items: center;
-      width: 100%;
+      justify-content: space-between; 
     }
   </style>
 </head>
-
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 1">
-    <div class="containernav">
+    <div class="container-nav">
       <a class="navbar-brand" href="/">
-        <img src="assets/images/logo-inverted.png" alt="" width="90px">
+      <img src="assets/images/logo.png" alt="" width="50px">
       </a>
     </div>
   </nav>
   <div class="container">
-    <h1>Welcome to Agile Sphere our Project Management Tool</h1>
+    <h1>Welcome to our Project Management Tool</h1>
     <p>Manage your projects efficiently with our powerful tool.</p>
     <div class="row">
       <div class="col-md-4 feature">
@@ -99,15 +85,13 @@
         <p>Work together seamlessly with your team members, no matter where they are.</p>
       </div>
       <div class="col-md-4 feature">
-        <img
-          src="https://static.vecteezy.com/system/resources/previews/002/744/938/original/progress-report-illustration-vector.jpg"
-          alt="Feature 3">
+        <img src="https://static.vecteezy.com/system/resources/previews/002/744/938/original/progress-report-illustration-vector.jpg" alt="Feature 3">
         <h3>Progress Tracking</h3>
         <p>Monitor the progress of your projects in real-time and make informed decisions.</p>
       </div>
     </div>
     <a href="/admin/login" class="btn btn-primary login-btn">Login to Your Account</a>
-
+    
   </div>
 
   <footer class="footer">
@@ -117,5 +101,4 @@
   </footer>
 
 </body>
-
 </html>
