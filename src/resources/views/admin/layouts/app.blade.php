@@ -67,23 +67,19 @@
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true"
                                             class="dropdown-menu dropdown-menu-right">
-                                            <button type="button" tabindex="0" class="dropdown-item">Logout</button>
+                                            <form action="/logout">
+                                                <button type="submit" tabindex="0" class="dropdown-item">Logout</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
                                     <div class="widget-heading">
-                                        Alina Mclourd
+                                        {{auth()->user()->name}}
                                     </div>
                                     <div class="widget-subheading">
-                                        VP People Manager
+                                        Role
                                     </div>
-                                </div>
-                                <div class="widget-content-right header-user-info ml-3">
-                                    <button type="button"
-                                        class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-                                        <i class="fa text-white fa-calendar pr-1 pl-1"></i>
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -221,34 +217,6 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-car"></i>
-                                    Components
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul class="mm-collapse">
-                                    <li>
-                                        <a href="index.html" class="mm-active">
-                                            <i class="metismenu-icon pe-7s-rocket"></i>
-                                            Button
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="tables-regular.html">
-                                    <i class="metismenu-icon pe-7s-display2"></i>
-                                    Tables
-                                </a>
-                            </li>
-                            <li class="app-sidebar__heading">Widgets</li>
-                            <li>
-                                <a href="dashboard-boxes.html">
-                                    <i class="metismenu-icon pe-7s-display2"></i>
-                                    Dashboard Boxes
-                                </a>
                             </li>
                         </ul>
                     </div>

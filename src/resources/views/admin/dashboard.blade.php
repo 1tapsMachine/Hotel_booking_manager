@@ -40,12 +40,12 @@
                     <div class="card mb-3 widget-content bg-grow-early">
                         <div class="widget-content-wrapper text-white">
                             <div class="widget-content-left">
-                                <div class="widget-heading">Departements</div>
+                                <div class="widget-heading">Managers</div>
                                 <div class="widget-subheading"></div>
                             </div>
                             <div class="widget-content-right">
                                 <div class="widget-numbers text-white"><span>
-                                    {{\App\Models\Department::count()}}    
+                                    {{\App\Models\Admin::count()}}    
                                 </span></div>
                             </div>
                         </div>
@@ -55,12 +55,12 @@
                     <div class="card mb-3 widget-content bg-premium-dark">
                         <div class="widget-content-wrapper text-white">
                             <div class="widget-content-left">
-                                <div class="widget-heading">Managers</div>
+                                <div class="widget-heading">Department</div>
                                 <div class="widget-subheading"></div>
                             </div>
                             <div class="widget-content-right">
                                 <div class="widget-numbers text-warning"><span>
-                                    {{\App\Models\Admin::count()}}
+                                    {{\App\Models\Department::count()}}
                                 </span></div>
                             </div>
                         </div>
