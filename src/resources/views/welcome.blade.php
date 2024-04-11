@@ -65,7 +65,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 1">
     <div class="container-nav">
       <a class="navbar-brand" href="/">
-      <img src="assets/images/logo.png" alt="" width="50px">
+      <img src="assets/images/logo-inverted.png" alt="" width="100px">
       </a>
     </div>
   </nav>
