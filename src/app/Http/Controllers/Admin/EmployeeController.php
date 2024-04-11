@@ -130,7 +130,7 @@ class EmployeeController extends Controller
                 return response()->json([
                     "success" => false,
                     'message' => [
-                        'Employee Not Create Successfully'
+                        'Failed to update employee'
                     ]
                 ]);
             }
@@ -150,14 +150,14 @@ class EmployeeController extends Controller
             return response()->json([
                 "success" => true,
                 'message' => [
-                    'Employee Delete Successfully'
+                    'Employee Deleted Successfully'
                 ]
             ]);
         } else {
             return response()->json([
                 "success" => false,
                 'message' => [
-                    'Employee Not Delete Successfully'
+                    'Failed to delete employee'
                 ]
             ]);
         }
