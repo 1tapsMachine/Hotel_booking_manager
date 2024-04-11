@@ -51,7 +51,7 @@
                                         <img src="{{ asset('storage') }}/{{  $employee->image }}" width="60" alt="">
                                         <input name="old_image" id="emp_image" type="hidden"  value="{{  $employee->image }}" class="form-control">
                                     </div>
-                                    <button type="submit" class="mt-1 btn btn-primary">Create</button>
+                                    <button type="submit" class="mt-1 btn btn-primary">Update</button>
                                 </form>
                             </div>
                         </div>

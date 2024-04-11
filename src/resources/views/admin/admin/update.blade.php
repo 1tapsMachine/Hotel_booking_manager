@@ -35,7 +35,7 @@
                                         <input name="phone" id="admin_phone" value="{{ $admin->phone }}" placeholder="Enter Admin phone" type="text"
                                             class="form-control">
                                     </div>
-                                    <button type="submit" class="mt-1 btn btn-primary">Create</button>
+                                    <button type="submit" class="mt-1 btn btn-primary">Update</button>
                                 </form>
                             </div>
                         </div>

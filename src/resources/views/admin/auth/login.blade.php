@@ -70,10 +70,9 @@
             <div class="col-md-6">
                 <div class="main-card mb-3 card">
                     <div class="card-body">
-                        <h5 class="card-title">Admin Login</h5>
+                        <h5 class="card-title">Login</h5>
                         <form class="">
-                            {{-- @csrf --}}
-
+                            @csrf 
                             <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                             <div class="position-relative form-group">
                                 <label for="exampleEmail" class="">Email</label>
