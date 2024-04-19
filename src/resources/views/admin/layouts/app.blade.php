@@ -13,6 +13,33 @@
     <meta name="msapplication-tap-highlight" content="no">
     <link href="{{ asset('main.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
+    <style>
+        .info-icon {
+            position: relative;
+        }
+
+        .info-icon .tooltip {
+            visibility: hidden;
+            width: 120px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .info-icon:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body>
@@ -74,7 +101,7 @@
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
-                                    <div class="widget-heading">
+                                    <div class="widget-heading pe-7s-users">
                                         {{auth()->user()->name}}
                                     </div>
                                     <div class="widget-subheading">
@@ -126,14 +153,14 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Dashboards</li>
                             <li>
-                                <a href="/admin/dashboard" class="mm-active">
-                                    <i class="metismenu-icon pe-7s-rocket"></i>
+                                <a href="/admin/dashboard" class="">
+                                    <i class="metismenu-icon pe-7s-map"></i>
                                     Dashboard
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-diamond"></i>
+                                    <i class="metismenu-icon pe-7s-add-user"></i>
                                     Employee
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
@@ -155,7 +182,7 @@
 
                             <li>
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-diamond"></i>
+                                    <i class="metismenu-icon pe-7s-timer"></i>
                                     Task
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
@@ -177,7 +204,7 @@
 
                             <li>
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-diamond"></i>
+                                    <i class="metismenu-icon pe-7s-network"></i>
                                     Department
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
@@ -199,8 +226,8 @@
 
                             <li>
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-diamond"></i>
-                                    Admin
+                                    <i class="metismenu-icon  pe-7s-culture"></i>
+                                    Managers
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul class="mm-collapse">

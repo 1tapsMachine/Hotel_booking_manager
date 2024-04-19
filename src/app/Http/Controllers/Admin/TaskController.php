@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Department;
 use App\Models\Employee;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -18,15 +19,15 @@ class TaskController extends Controller
 
     public function add()
     {
-        $employees = Employee::latest()->get();
-        return view('admin.tasks.create', compact('employees'));
+        $departments = Department::latest()->get();
+        return view('admin.tasks.create', compact('departments'));
     }
 
     public function create(Request $request)
     {
         $validation = Validator::make($request->all(), [
             'title' => 'required',
-            'employee' => 'required',
+            'departement' => 'required',
             'content' => 'required',
             'status' => 'required',
             'date' => 'required',
@@ -42,8 +43,7 @@ class TaskController extends Controller
 
             $tasks->title = $request->title;
             $tasks->content = $request->content;
-            $tasks->emp_id = $request->employee;
-            $tasks->content = $request->content;
+            $tasks->dep_id = $request->departement;
             $tasks->date = $request->date;
             $tasks->status = $request->status;
             $result = $tasks->save();

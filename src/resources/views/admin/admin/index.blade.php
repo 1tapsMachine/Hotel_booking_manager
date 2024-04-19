@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    List of Admin
+    List of Mangers
 @endsection
 
 @section('content')
@@ -32,10 +32,15 @@
                                             <td>{{ $admin->email }}</td>
                                             <td>{{ $admin->phone }}</td>
                                             <td>
+                                                @if($admin->id == 1)
+                                                -
+                                                @else
                                                 <button class="btn btn-danger" id="delete-admin"
-                                                    data-id='{{ $admin->id }}'>Delete</button>
-                                                    <a href="{{ route('admin.admin.edit', ['id'=>$admin->id]) }}" class="btn btn-primary" 
-                                                    >Edit</a></td>
+                                                data-id='{{ $admin->id }}'>Delete</button>
+                                                <a href="{{ route('admin.admin.edit', ['id'=>$admin->id]) }}" class="btn btn-primary" 
+                                                    >Edit</a>
+                                                    @endif
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </table>

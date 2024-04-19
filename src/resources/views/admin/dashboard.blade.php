@@ -78,7 +78,7 @@ Dashboard
 								<tr>
 									<th class="text-center">#</th>
 									<th>Name</th>
-									<th class="text-center">Employee</th>
+									<th class="text-center">Department</th>
 									<th class="text-center">Status</th>
 									<th class="text-center">Actions</th>
 								</tr>
@@ -94,7 +94,7 @@ Dashboard
 											{{$task->title}}
 										</td>
 										<td>
-											{{$task->emp_id}}
+											{{\App\Models\Department::find($task->dep_id)->name}}
 										</td>
 										<td>
 											@if($task->status == 1)

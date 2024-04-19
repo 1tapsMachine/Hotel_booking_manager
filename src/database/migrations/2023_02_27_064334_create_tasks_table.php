@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('emp_id')->constrained('employees')->cascadeOnDelete();
+            $table->foreignId('dep_id')->constrained('departments')->onDelete('cascade');
             $table->text('title');
             $table->longText('content');
             $table->string('date');

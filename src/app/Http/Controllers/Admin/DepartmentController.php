@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Department;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,19 +13,21 @@ class DepartmentController extends Controller
     public function index()
     {
         $departments = Department::latest()->get();
-        return view('admin.departments.index', compact('departments'));
+        return view('admin.departments.index')->with('departments', $departments);
     }
 
     public function add()
     {
-        return view('admin.departments.create');
+        $employees = Employee::latest()->get();
+        return view('admin.departments.create')->with('employees', $employees);
     }
 
 
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(), [
-            'name' => 'required'
+            'name' => 'required',
+            'employee' => 'required'
         ]);
 
         if ($validation->fails()) {
@@ -35,6 +38,7 @@ class DepartmentController extends Controller
         } else {
             $departments = new Department();
             $departments->name = $request->name;
+            $departments->emp_list = json_encode($request->input('employee'));
             $departments->save();
 
             return response()->json([
@@ -47,7 +51,8 @@ class DepartmentController extends Controller
     public function edit($id)
     {
         $department = Department::findOrFail($id);
-        return view('admin.departments.update', compact('department'));
+        $employees = Employee::latest()->get();
+        return view('admin.departments.update')->with('department', $department)->with('employees', $employees);
     }
 
     public function update(Request $request)
@@ -64,6 +69,7 @@ class DepartmentController extends Controller
         } else {
             $departments = Department::findOrFail($request->id);
             $departments->name = $request->name;
+            $departments->emp_list = json_encode($request->input('employee'));
             $departments->save();
 
             return response()->json([

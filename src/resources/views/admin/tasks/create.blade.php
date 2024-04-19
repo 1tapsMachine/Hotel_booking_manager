@@ -16,14 +16,14 @@
                                 <form class="" id="create_task">
                                     <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                     <div class="position-relative form-group">
-                                        <label for="exampleEmail" class="">List of Employee</label>
-                                        <select name="employee" id="employee" class="form-control">
-                                            <option value="">Select Employee</option>
-                                           @forelse ($employees as $employee)
-                                            <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                        <label for="exampleEmail" class="">List of Departements</label>
+                                        <select name="departement" id="departement" class="form-control">
+                                            <option value="" hidden>Select Departement</option>
+                                           @forelse ($departments as $department)
+                                            <option value="{{ $department->id }}">{{ $department->name }}</option>
                                                
                                            @empty
-                                            <option value="">Employee list not found</option>
+                                            <option value="" disabled>Departement list not found</option>
                                                
                                            @endforelse
                                         </select>
