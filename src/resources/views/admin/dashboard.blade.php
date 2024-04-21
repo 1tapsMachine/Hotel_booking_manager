@@ -125,7 +125,7 @@ Dashboard
     						progressValue = document.querySelector(".progress-value");
 
 							let progressStartValue = 0,    
-								progressEndValue = 90,    
+								progressEndValue = 100,  
 								speed = 20;
 								
 							let progress = setInterval(() => {
@@ -224,7 +224,7 @@ Dashboard
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-body">
-						<canvas id="myChart"></canvas>
+						<canvas id="myChart" height="40px"></canvas>
 					</div>
 				</div>
 			</div>
@@ -269,7 +269,8 @@ Dashboard
 			}
 		}
 	}); // Corrected this line
-	
+</script>
+<script>
 $(document).on('click', '#delete-task', function(e) {
 	e.preventDefault();
 	
@@ -285,15 +286,25 @@ $(document).on('click', '#delete-task', function(e) {
 			dataType: 'json',
 			success: (data) => {
 				if (data.success == true) {
-					alert(data.message);
-					window.location.href = "{{ route('admin.dashboard') }}"
+					Swal.fire({
+						title: 'Success',
+						text: data.message,
+						icon: 'success',
+						confirmButtonText: 'Ok'
+					}).then(() => {
+						window.location.href = "{{ route('admin.dashboard') }}"
+					}) // Added closing brackets here
 				} else {
-					alert(data.message);
+					Swal.fire({
+						title: 'Error',
+						text: data.message,
+						icon: 'error',
+						confirmButtonText: 'Ok'
+					})
 				}
 			}
 		})
 	}
 })
 </script>
-
 @endsection

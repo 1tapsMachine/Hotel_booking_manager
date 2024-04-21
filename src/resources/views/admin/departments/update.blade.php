@@ -61,10 +61,21 @@ Update Department
             processData: false,
             success: (data) => {
                 if(data.success==true){
-                    alert(data.message)
-                    window.location.href = '{{ route("admin.dashboard") }}'
+                    Swal.fire({
+						title: 'Success',
+						text: data.message,
+						icon: 'success',
+						confirmButtonText: 'Ok'
+					}).then(() => {
+						window.location.href = "{{ route('admin.department.list') }}"
+					})
                 }else{
-                    alert(data.message)
+                    Swal.fire({
+                        title: 'Error',
+                        text: data.message,
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    })
                 }
             }
         })
