@@ -21,8 +21,9 @@ class LoginController extends Controller
         $password = $request->password;
 
         $admin = Auth::guard('admin')->attempt(['email' => $email, 'password' => $password]);
-        if ($admin) {
-            echo 1;
+        if ($admin)
+        {
+            return redirect()->route('admin.dashboard');
         } else {
             echo 0;
         }
