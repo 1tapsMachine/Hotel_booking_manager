@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('title');
             $table->longText('content');
             $table->string('date');
+            $table->string('due_date');
             $table->integer('status');
             $table->timestamps();
         });

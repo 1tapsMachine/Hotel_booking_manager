@@ -53,7 +53,12 @@
                                         <input name="date" id="date" value="{{ $task->date }}" placeholder="" type="date"
                                             class="form-control">
                                     </div>
-
+                                    <div class="position-relative form-group">
+                                        <label for="exampleEmail" class="">Due Date
+                                        </label>
+                                        <input name="due_date" id="due_date" value="{{ $task->due_date }}" placeholder="" type="date"
+                                            class="form-control">
+                                    </div>
                                     <div class="position-relative form-group">
                                         <label for="exampleEmail" class="">Status</label>
                                         <select name="status" value="{{ $task->status }}" id="status" class="form-control">

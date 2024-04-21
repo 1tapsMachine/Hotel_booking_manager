@@ -45,6 +45,7 @@ class TaskController extends Controller
             $tasks->content = $request->content;
             $tasks->dep_id = $request->departement;
             $tasks->date = $request->date;
+            $tasks->due_date = $request->due_date;
             $tasks->status = $request->status;
             $result = $tasks->save();
             if ($result) {
@@ -105,6 +106,7 @@ class TaskController extends Controller
             $tasks->dep_id = $request->departements;
             $tasks->content = $request->content;
             $tasks->date = $request->date;
+            $tasks->due_date = $request->due_date;
             $tasks->status = $request->status;
             $result = $tasks->save();
             if ($result) {

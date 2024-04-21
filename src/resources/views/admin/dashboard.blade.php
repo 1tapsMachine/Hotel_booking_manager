@@ -240,8 +240,8 @@ Dashboard
 @section('footer')
 <script>
 	const ctx = document.getElementById('myChart').getContext('2d');
-	const xValues = ["Employee", "Department", "Task", "Manager"];
-	const yValues = [{{\App\Models\Employee::count()}}, {{\App\Models\Department::count()}}, {{\App\Models\Task::count()}}, {{\App\Models\Admin::count()}}];
+	const xValues = ["Employee", "Department", "Task"];
+	const yValues = [{{\App\Models\Employee::count()}}, {{\App\Models\Department::count()}}, {{\App\Models\Task::count()}}];
 	const barColors = [
 		"#b91d47",
 		"#00aba9",
