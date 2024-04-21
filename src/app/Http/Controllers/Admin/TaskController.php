@@ -78,8 +78,8 @@ class TaskController extends Controller
 
     public function edit($id){
         $task=Task::findOrFail($id);
-        $employees = Employee::latest()->get();
-        return view('admin.tasks.update',compact(['task','employees']));
+        $departements = Department::latest()->get();
+        return view('admin.tasks.update',compact(['task','departements']));
     }
 
 
@@ -87,7 +87,7 @@ class TaskController extends Controller
     {
         $validation = Validator::make($request->all(), [
             'title' => 'required',
-            'employee' => 'required',
+            'departements' => 'required',
             'content' => 'required',
             'status' => 'required',
             'date' => 'required',
@@ -102,7 +102,7 @@ class TaskController extends Controller
             $tasks = Task::findOrFail($request->id);
             $tasks->title = $request->title;
             $tasks->content = $request->content;
-            $tasks->emp_id = $request->employee;
+            $tasks->dep_id = $request->departements;
             $tasks->content = $request->content;
             $tasks->date = $request->date;
             $tasks->status = $request->status;
@@ -118,6 +118,6 @@ class TaskController extends Controller
                     'message' => ['Task not update successfully']
                 ]);
             }
-        }
+        };
     }
 }

@@ -16,11 +16,11 @@
                                 <form class="" id="update_task">
                                     <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                                     <div class="position-relative form-group">
-                                        <label for="exampleEmail" class="">List of Employee</label>
-                                        <select name="employee" id="employee" class="form-control">
-                                            <option value="">Select Employee</option>
-                                            @forelse ($employees as $employee)
-                                                @if ($employee->id == $task->emp_id)
+                                        <label for="exampleEmail" class="">List of Departements</label>
+                                        <select name="departements" id="employee" class="form-control">
+                                            <option value="" hidden>Select departement</option>
+                                            @forelse ($departements as $departement)
+                                                @if ($departement->id == $task->dep_id)
                                                     @php
                                                         $selected = 'selected';
                                                     @endphp
@@ -29,11 +29,11 @@
                                                         $selected = '';
                                                     @endphp
                                                 @endif
-                                                <option value="{{ $employee->id }}" {{ $selected }}>
-                                                    {{ $employee->name }}</option>
+                                                <option value="{{ $departement->id }}" {{ $selected }}>
+                                                    {{ $departement->name }}</option>
 
                                             @empty
-                                                <option value="">Employee list not found</option>
+                                                <option value="">Departement list not found</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -88,6 +88,7 @@
                 success: (data) => {
                     if (data.success == true) {
                         alert(data.message)
+                        window.location.href = "{{ route('admin.dashboard') }}"
                     } else {
                         alert(data.message)
                     }

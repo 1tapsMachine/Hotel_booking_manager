@@ -30,7 +30,7 @@
                                 @foreach ($tasks as $task)
                                     <tr>
                                         <td>{{ $task->id }}</td>
-                                        <td>{{ $task->employee->name }}</td>
+                                        <td>{{ $task->name }}</td>
                                         <td>{{ $task->title }}</td>
                                         <td>{{ $task->content }}</td>
                                         <td>{{ $task->date }}</td>

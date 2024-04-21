@@ -39,10 +39,12 @@
                                     </div>
                                     <div class="position-relative form-group">
                                         <label for="exampleEmail" class="">Publish Date</label>
-                                        <input name="date" id="date" placeholder=""
-                                            type="date" class="form-control">
+                                        <input name="date" id="date" placeholder="" type="date" class="form-control" value="{{ date('Y-m-d') }}">
                                     </div>
-
+                                    <div class="position-relative form-group">
+                                        <label for="exampleEmail" class="">Due Date</label>
+                                        <input name="due_date" id="due_date" placeholder="" type="date" class="form-control" min="{{ date('Y-m-d') }}">
+                                    </div>
                                     <div class="position-relative form-group">
                                         <label for="exampleEmail" class="">Status</label>
                                         <select name="status" id="status" class="form-control">

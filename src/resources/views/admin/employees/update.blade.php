@@ -78,6 +78,7 @@
             success: (data) => {
                 if(data.success==true){
                     alert(data.message)
+                    window.location.href = '{{ route("admin.dashboard") }}'
                 }else{
                     alert(data.message)
                 }
