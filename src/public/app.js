@@ -49,7 +49,7 @@ $(document).ready(function () {
 						icon: 'success',
 						confirmButtonText: 'Ok'
 					}).then(() => {
-						window.location.href = "{{ route('admin.employee.list') }}";
+						window.location.href = "./list";
 					})
                 }else{
                     Swal.fire({
