@@ -10,7 +10,7 @@
     <title>Agile Sphere- @yield('title')</title>
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-    <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+    <meta name="description" content="AgileSphere a project management tool made by devlopers to devlopers">
     <meta name="msapplication-tap-highlight" content="no">
     <link href="{{ asset('main.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">

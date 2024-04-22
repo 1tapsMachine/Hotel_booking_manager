@@ -151,69 +151,46 @@ Dashboard
 		<div class="row">
 			<div class="col-md-12">
 				<div class="main-card mb-3 card">
-					<div class="card-header">Recent tasks
+					<div class="card-header text-center">Recent tasks
 					</div>
 					<div class="table-responsive">
 						<table class="align-middle mb-0 table table-borderless table-striped table-hover">
 							<thead>
-								<tr>
-									<th class="text-center">#</th>
+								<tr class="text-center">
+									<th>#</th>
 									<th>Name</th>
-									<th class="text-center">Department</th>
-									<th class="text-center">Status</th>
-									<th class="text-center">Actions</th>
+									<th>Department</th>
+									<th>Status</th>
+									<th>Actions</th>
 								</tr>
 							</thead>
 							<tbody>
 								@if($tasks != null && count($tasks) > 0)
-								@foreach($tasks as $task)
-								<tr>
-									<td>
-										{{$task->id}}
-									</td>
-									<td>
-										{{$task->title}}
-									</td>
-									<td>
-										{{\App\Models\Department::find($task->dep_id)->name}}
-									</td>
-									<td>
-										@if($task->status == 1)
-										<center>
-											<div class="badge badge-success">
-												Active
-											</div>
-										</center>
-										@else
-										<center>
-											<div class="badge badge-danger">
-												Inactive
-											</div>
-										</center>
-										@endif
-									</td>
-
-									<td>
-										<center>
-											<button class="btn btn-danger" id="delete-task"
-												data-id='{{ $task->id }}'>Delete</button>
-											<a href="{{ route('admin.task.edit', ['id' => $task->id]) }}"
-												class="btn btn-primary">Edit</a>
-										</center>
-									</td>
-
-								</tr>
-								@endforeach
+									@foreach($tasks as $task)
+										<tr class="text-center">
+											<td>{{$task->id}}</td>
+											<td>{{$task->title}}</td>
+											<td>{{\App\Models\Department::find($task->dep_id)->name}}</td>
+											<td>
+												@if($task->status == 1)
+													<div class="badge badge-success">Active</div>
+												@else
+													<div class="badge badge-danger">Inactive</div>
+												@endif
+											</td>
+											<td>
+												<button class="btn btn-danger" id="delete-task" data-id='{{ $task->id }}'>Delete</button>
+												<a href="{{ route('admin.task.edit', ['id' => $task->id]) }}" class="btn btn-primary">Edit</a>
+											</td>
+										</tr>
+									@endforeach
 								@else
-								<tr>
-									<td colspan="5">
-										<center>
+									<tr>
+										<td colspan="5" class="text-center">
 											No tasks yet add some <a href="/admin/tasks/add">here</a>
-										</center>
-									</td>
-								</tr>
+										</td>
+									</tr>
 								@endif
-
 							</tbody>
 						</table>
 					</div>
