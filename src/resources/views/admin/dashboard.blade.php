@@ -177,6 +177,8 @@ Dashboard
 								@else
 									color: #40BABD !important;
 								@endif
+								/* writing tasks capitalized*/
+								text-transform: capitalize;
 						">
 							{{$task->title}}
 						</span></span>
