@@ -62,11 +62,11 @@ Dashboard
 							<div class="widget-numbers text-warning"><span>
 									{{\App\Models\Department::count()}}
 								</span></div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>--}}
+			</div>--}}
 		<div class="row justify-content-center flex-wrap">
 			@forelse($tasks as $task)
 			@if($task->status == 1)
@@ -75,6 +75,10 @@ Dashboard
 				<div class="container">
 					<div class="circular-progress{{$task->id}}">
 						<span class="progress-value{{$task->id}}">0%</span>
+						@php
+							$diff = date_diff(date_create(date('Y-m-d')), date_create($task->due_date));
+							$intial_diff = date_diff(date_create(date('Y-m-d')), date_create($task->created_at));
+						@endphp
 						<style>
 							.prog-col{
 								margin: 0;
@@ -95,8 +99,14 @@ Dashboard
 								height: 250px;
 								width: 250px;
 								border-radius: 50%;
-								background: conic-gradient(#40BABD 3.6deg, #ededed 0deg);
-								display: flex;
+/* 								@if($diff->days < 10)
+									background:conic-gradient(#ff0000 3.6deg, #ededed 0deg);
+								@elseif($diff->days < 30)
+									background:conic-gradient(#FFA500 3.6deg, #ededed 0deg);
+								@else
+									background:conic-gradient(#40BABD 3.6deg, #ededed 0deg);
+								@endif
+ */								display: flex;
 								align-items: center;
 								justify-content: center;
 							}
@@ -114,19 +124,31 @@ Dashboard
 								position: relative;
 								font-size: 40px;
 								font-weight: 600;
-								color: #40BABD;
+								@if($diff->days < 10)
+									color: #ff0000;
+								@elseif($diff->days < 20)
+									color: #FFA500;
+								@else
+									color: #40BABD;
+								@endif
 							}
 
+							span.task-name{
+								text-decoration: solid underline;
+								@if($diff->days < 10)
+									color: #ff0000;
+								@elseif($diff->days < 20)
+									color: #FFA500;
+								@else
+									color: #40BABD;
+								@endif
+							}
 							.text {
-								font-size: 30px;
+								font-size: 20px;
 								font-weight: 500;
 								color: #606060;
 							}
 						</style>
-						@php
-							$diff = date_diff(date_create(date('Y-m-d')), date_create($task->due_date));
-							$intial_diff = date_diff(date_create(date('Y-m-d')), date_create($task->created_at));
-						@endphp
 						<script>
 							let circularProgress{{$task->id}} = document.querySelector(".circular-progress{{$task->id}}"),
     						progressValue{{$task->id}} = document.querySelector(".progress-value{{$task->id}}");
@@ -138,8 +160,14 @@ Dashboard
 							let progress{{$task->id}} = setInterval(() => {
 								progressInitialValue{{$task->id}}++;
 								progressValue{{$task->id}}.textContent = `${progressInitialValue{{$task->id}}} DAYS`
-								circularProgress{{$task->id}}.style.background = `conic-gradient(#40BABD ${progressInitialValue{{$task->id}} * 3.6}deg, #ededed 0deg)`
-								
+								@if($diff->days < 10)
+									circularProgress{{$task->id}}.style.background = `conic-gradient(#ff0000 ${progressInitialValue{{$task->id}} * 3.6}deg, #ededed 0deg)`
+								@elseif($diff->days < 20)
+									circularProgress{{$task->id}}.style.background = `conic-gradient(#FFA500 ${progressInitialValue{{$task->id}} * 3.6}deg, #ededed 0deg)`
+								@else
+									circularProgress{{$task->id}}.style.background = `conic-gradient(#40BABD ${progressInitialValue{{$task->id}} * 3.6}deg, #ededed 0deg)`								
+								@endif
+
 								if(progressInitialValue{{$task->id}} == progressFinalValue{{$task->id}}){
 									clearInterval(progress{{$task->id}});
 								}    
@@ -148,7 +176,7 @@ Dashboard
 					</div>
 					<br>
 					<span class="text">Remaining days for : 
-						<span style="color: #40BABD; font-weight: 600;">
+						<span class="task-name">
 							{{$task->title}}
 						</span></span>
 					</div>
