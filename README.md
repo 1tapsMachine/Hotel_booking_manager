@@ -1,32 +1,32 @@
-# Project Management System
+# Task Management System
 
 ## Overview
 
-Develop a comprehensive Project Management System to facilitate efficient project planning, execution, and collaboration. The system will integrate React for the frontend, Laravel for the backend, and provide a seamless user experience for project managers and team members.
+Develop a comprehensive Task Management System to facilitate efficient task planning, execution, and collaboration. The system will integrate React for the frontend, Laravel for the backend, and provide a seamless user experience for task managers and team members.
 
 
 ## Diagrams :
 
 1. **Use case :**
-https://ibb.co/G9M684k
-2.   **Class Diagram :**
-https://ibb.co/z80g5y4
+![Use case diagram](https://ibb.co/G9M684k)
+2. **Class Diagram :**
+![Class diagram](https://ibb.co/z80g5y4)
 ## Key Features
 
 1. **User Authentication:**
    - Implement secure user authentication with Laravel's built-in features.
    - Allow users to register, log in, and manage their profiles.
 
-2. **Project Creation and Management:**
-   - Enable users to create projects, define project details, and set project milestones.
-   - Utilize Laravel to manage project data in the database.
+2. **Task Creation and Management:**
+   - Enable users to create tasks, define task details, and set task milestones.
+   - Utilize Laravel to manage task data in the database.
 
 3. **Task Tracking:**
-   - Implement a task tracking system within projects, allowing users to create, assign, and update tasks.
+   - Implement a task tracking system, allowing users to create, assign, and update tasks.
    - Use React to create an interactive task board for easy task management.
 
 4. **Kanban Board:**
-   - Integrate a Kanban board for visualizing project tasks and their status.
+   - Integrate a Kanban board for visualizing tasks and their status.
    - Leverage React components to provide a dynamic and responsive Kanban board.
 
 5. **Real-Time Updates:**
@@ -34,11 +34,11 @@ https://ibb.co/z80g5y4
    - Users receive immediate feedback on task assignments and status updates.
 
 6. **User Dashboards:**
-   - Provide user dashboards for project overview, task assignments, and progress tracking.
+   - Provide user dashboards for task overview, assignments, and progress tracking.
    - Use React components to create interactive and personalized dashboards.
 
 7. **Admin Panel:**
-   - Create an admin panel for managing users, projects, and overseeing overall system activities.
+   - Create an admin panel for managing users, tasks, and overseeing overall system activities.
    - Laravel's backend handles admin-specific functionalities.
 
 8. **Collaboration Tools:**
@@ -50,7 +50,7 @@ https://ibb.co/z80g5y4
    - Laravel securely manages time-related data and calculations.
 
 10. **Reports and Analytics:**
-    - Generate reports on project progress, task completion rates, and user activity.
+    - Generate reports on task progress, completion rates, and user activity.
     - Leverage Laravel for backend data processing and React for presenting analytics.
 
 ## Technical Stack
@@ -69,7 +69,7 @@ https://ibb.co/z80g5y4
 ## Security Considerations
 
 - Ensure secure user authentication and authorization.
-- Implement HTTPS for secure data transmission, especially for sensitive project information.
+- Implement HTTPS for secure data transmission, especially for sensitive task information.
 - Apply input validation and sanitation to prevent security vulnerabilities.
 
 ## Testing
@@ -80,4 +80,4 @@ https://ibb.co/z80g5y4
 
 ## Conclusion
 
-This Project Management System, powered by Laravel and React, aims to streamline project workflows, enhance collaboration, and provide project managers and team members with a robust platform for successful project execution.
+This Task Management System, powered by Laravel and React, aims to streamline task workflows, enhance collaboration, and provide task managers and team members with a robust platform for successful task execution.
