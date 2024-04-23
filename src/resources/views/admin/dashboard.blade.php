@@ -99,14 +99,7 @@ Dashboard
 								height: 250px;
 								width: 250px;
 								border-radius: 50%;
-/* 								@if($diff->days < 10)
-									background:conic-gradient(#ff0000 3.6deg, #ededed 0deg);
-								@elseif($diff->days < 30)
-									background:conic-gradient(#FFA500 3.6deg, #ededed 0deg);
-								@else
-									background:conic-gradient(#40BABD 3.6deg, #ededed 0deg);
-								@endif
- */								display: flex;
+								display: flex;
 								align-items: center;
 								justify-content: center;
 							}
