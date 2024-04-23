@@ -7,66 +7,6 @@ Dashboard
 @section('content')
 <div class="app-main__outer">
 	<div class="app-main__inner">
-		{{-- <div class="row">
-			<div class="col-md-6 col-xl-4">
-				<div class="card mb-3 widget-content bg-midnight-bloom">
-					<div class="widget-content-wrapper text-white">
-						<div class="widget-content-left">
-							<div class="widget-heading">Total Tasks</div>
-							<div class="widget-subheading"></div>
-						</div>
-						<div class="widget-content-right">
-							<div class="widget-numbers text-white"><span>{{\App\Models\Task::count()}}</span></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-xl-4">
-				<div class="card mb-3 widget-content bg-arielle-smile">
-					<div class="widget-content-wrapper text-white">
-						<div class="widget-content-left">
-							<div class="widget-heading">Employees</div>
-							<div class="widget-subheading"></div>
-						</div>
-						<div class="widget-content-right">
-							<div class="widget-numbers text-white"><span>
-									{{\App\Models\Task::count()}}
-								</span></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-xl-4">
-				<div class="card mb-3 widget-content bg-grow-early">
-					<div class="widget-content-wrapper text-white">
-						<div class="widget-content-left">
-							<div class="widget-heading">Managers</div>
-							<div class="widget-subheading"></div>
-						</div>
-						<div class="widget-content-right">
-							<div class="widget-numbers text-white"><span>
-									{{\App\Models\Admin::count()}}
-								</span></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-xl-4">
-				<div class="card mb-3 widget-content bg-premium-dark">
-					<div class="widget-content-wrapper text-white">
-						<div class="widget-content-left">
-							<div class="widget-heading">Department</div>
-							<div class="widget-subheading"></div>
-						</div>
-						<div class="widget-content-right">
-							<div class="widget-numbers text-warning"><span>
-									{{\App\Models\Department::count()}}
-								</span></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>--}}
 		<div class="row justify-content-center flex-wrap">
 			@forelse($tasks as $task)
 			@if($task->status == 1)
@@ -303,40 +243,40 @@ Dashboard
 	});
 </script>
 <script>
-$(document).on('click', '#delete-task', function(e) {
-	e.preventDefault();
-	
-	const id = $(this).data('id');
-	if (id != "") {
-		$.ajax({
-			type: 'POST',
-			url: "{{ route('admin.task.delete') }}",
-			data: {
-				id,
-				"_token": "{{ csrf_token() }}"
-			},
-			dataType: 'json',
-			success: (data) => {
-				if (data.success == true) {
-					Swal.fire({
-						title: 'Success',
-						text: data.message,
-						icon: 'success',
-						confirmButtonText: 'Ok'
-					}).then(() => {
-						window.location.href = "{{ route('admin.dashboard') }}"
-					}) // Added closing brackets here
-				} else {
-					Swal.fire({
-						title: 'Error',
-						text: data.message,
-						icon: 'error',
-						confirmButtonText: 'Ok'
-					})
+	$(document).on('click', '#delete-task', function(e) {
+		e.preventDefault();
+		
+		const id = $(this).data('id');
+		if (id != "") {
+			$.ajax({
+				type: 'POST',
+				url: "{{ route('admin.task.delete') }}",
+				data: {
+					id,
+					"_token": "{{ csrf_token() }}"
+				},
+				dataType: 'json',
+				success: (data) => {
+					if (data.success == true) {
+						Swal.fire({
+							title: 'Success',
+							text: data.message,
+							icon: 'success',
+							confirmButtonText: 'Ok'
+						}).then(() => {
+							window.location.href = "{{ route('admin.dashboard') }}"
+						}) // Added closing brackets here
+					} else {
+						Swal.fire({
+							title: 'Error',
+							text: data.message,
+							icon: 'error',
+							confirmButtonText: 'Ok'
+						})
+					}
 				}
-			}
-		})
-	}
-})
+			})
+		}
+	})
 </script>
 @endsection
