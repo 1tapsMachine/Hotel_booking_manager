@@ -70,8 +70,9 @@ Dashboard
 		<div class="row">
 			<div class="col-md-3 prog-col">
 				<div class="container">
-					<div class="circular-progress">
-						<span class="progress-value">0%</span>
+					@forelse($tasks as $task)
+					<div class="circular-progress{{$task->id}}">
+						<span class="progress-value{{$task->id}}">0%</span>
 						<style>
 							.prog-col{
 								margin: 0;
@@ -87,7 +88,7 @@ Dashboard
 								align-items: center;
 							}
 
-							.circular-progress {
+							.circular-progress{{$task->id}} {
 								position: relative;
 								height: 250px;
 								width: 250px;
@@ -98,7 +99,7 @@ Dashboard
 								justify-content: center;
 							}
 
-							.circular-progress::before {
+							.circular-progress{{$task->id}}::before {
 								content: "";
 								position: absolute;
 								height: 210px;
@@ -107,7 +108,7 @@ Dashboard
 								background-color: #fff;
 							}
 
-							.progress-value {
+							.progress-value{{$task->id}}{
 								position: relative;
 								font-size: 40px;
 								font-weight: 600;
@@ -121,8 +122,8 @@ Dashboard
 							}
 						</style>
 						<script>
-							let circularProgress = document.querySelector(".circular-progress"),
-    						progressValue = document.querySelector(".progress-value");
+							let circularProgress = document.querySelector(".circular-progress{{$task->id}}"),
+    						progressValue = document.querySelector(".progress-value{{$task->id}}");
 
 							let progressStartValue = 0,    
 								progressEndValue = 100,  
@@ -140,7 +141,11 @@ Dashboard
 							}, speed);
 						</script>
 					</div>
-					<span class="text"></span>
+					<br>
+					<span class="text">{{$task->title}}</span>
+					@empty
+						
+					@endforelse
 				</div>
 			</div>
 			<div class="col-md-1">		

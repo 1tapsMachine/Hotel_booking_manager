@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $("#login").click(function (e) {
+    /* $("#login").click(function (e) {
         e.preventDefault();
 
 
@@ -18,13 +18,16 @@ $(document).ready(function () {
                 success: (data) => {
                     if (data == 1) {
                         window.location.href = '/admin/dashboard'
-                    } else {
+                    }
+                    if(data == 2){
+                        window.location.href = '/user/dashboard'
+                    }else {
                         alert("Invalid email and password");
                     }
                 }
             })
         }
-    });
+    }); */
 
 
     // create employee

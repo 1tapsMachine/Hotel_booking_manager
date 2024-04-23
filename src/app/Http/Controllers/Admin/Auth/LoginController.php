@@ -21,10 +21,16 @@ class LoginController extends Controller
         $password = $request->password;
 
         $admin = Auth::guard('admin')->attempt(['email' => $email, 'password' => $password]);
+        $employee = Auth::guard('employee')->attempt(['email' => $email, 'password' => $password]);
         if ($admin)
-        {
+        {    
             return redirect()->route('admin.dashboard');
-        } else {
+        }
+        elseif ($employee)
+        {
+            echo 2;
+        } 
+        else {
             echo 0;
         }
     }
