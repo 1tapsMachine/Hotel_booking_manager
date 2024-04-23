@@ -125,24 +125,26 @@ Dashboard
 							let circularProgress = document.querySelector(".circular-progress{{$task->id}}"),
     						progressValue = document.querySelector(".progress-value{{$task->id}}");
 
-							let progressStartValue = 0,    
-								progressEndValue = 100,  
+							let progressInitialValue = 100,    
+								progressFinalValue = 20,  
 								speed = 20;
-								
+							
 							let progress = setInterval(() => {
-								progressStartValue++;
+								progressInitialValue--;
+								progressValue.textContent = `${progressInitialValue} DAYS`
+								circularProgress.style.background = `conic-gradient(#40BABD ${progressInitialValue * 3.6}deg, #ededed 0deg)`
 
-								progressValue.textContent = `${progressStartValue}%`
-								circularProgress.style.background = `conic-gradient(#40BABD ${progressStartValue * 3.6}deg, #ededed 0deg)`
-
-								if(progressStartValue == progressEndValue){
+								if(progressInitialValue == progressFinalValue){
 									clearInterval(progress);
 								}    
 							}, speed);
 						</script>
 					</div>
 					<br>
-					<span class="text">remaining days for :{{$task->title}}</span>
+					<span class="text">Remaining days for : 
+						<span style="color: #40BABD; font-weight: 600;">
+							{{$task->title}}
+						</span></span>
 					@empty
 						
 					@endforelse
