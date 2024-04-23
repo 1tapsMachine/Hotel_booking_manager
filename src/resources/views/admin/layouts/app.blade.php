@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="assets/css/progressbar.css">
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.min.css" rel="stylesheet">
     <style>
+        .app-main__outer{
+            overflow: hidden;
+        }
         .info-icon {
             position: relative;
         }
@@ -108,7 +111,7 @@
                                         {{auth()->user()->name}}
                                     </div>
                                     <div class="widget-subheading">
-                                        Role
+                                        {{auth()->user()->email}}
                                     </div>
                                 </div>
                             </div>

@@ -7,6 +7,75 @@ Dashboard
 @section('content')
 <div class="app-main__outer">
 	<div class="app-main__inner">
+	
+		{{-- Recent Tasks --}}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="main-card mb-3 card">
+					<div class="card-header text-center">Recent tasks
+					</div>
+					<div class="table-responsive">
+						<table class="align-middle mb-0 table table-borderless table-striped table-hover">
+							<thead>
+								<tr class="text-center">
+									<th>#</th>
+									<th>Name</th>
+									<th>Department</th>
+									<th>Status</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								@if($tasks != null && count($tasks) > 0)
+									@foreach($tasks as $task)
+										<tr class="text-center">
+											<td>{{$task->id}}</td>
+											<td>{{$task->title}}</td>
+											<td>{{\App\Models\Department::find($task->dep_id)->name}}</td>
+											<td>
+												@if($task->status == 1)
+													<div class="badge badge-success">Active</div>
+												@else
+													<div class="badge badge-danger">Inactive</div>
+												@endif
+											</td>
+											<td>
+												<button class="btn btn-danger" id="delete-task" data-id='{{ $task->id }}'>Delete</button>
+												<a href="{{ route('admin.task.edit', ['id' => $task->id]) }}" class="btn btn-primary">Edit</a>
+											</td>
+										</tr>
+									@endforeach
+								@else
+									<tr>
+										<td colspan="5" class="text-center">
+											No tasks yet add some <a href="/admin/tasks/add">here</a>
+										</td>
+									</tr>
+								@endif
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{-- End Recent Tasks --}}
+
+		{{-- Chart --}}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<canvas id="myChart" height="40px"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		{{-- End Chart --}}
+
+
+				
+		{{-- Progress Bar --}}
 		<div class="row justify-content-center flex-wrap">
 			@forelse($tasks as $task)
 			@if($task->status == 1)
@@ -65,17 +134,6 @@ Dashboard
 									color: #40BABD;
 								@endif
 							}
-
-							span.task-name{
-								text-decoration: solid underline;
-								@if($diff->days < 10)
-									color: #ff0000;
-								@elseif($diff->days < 20)
-									color: #FFA500;
-								@else
-									color: #40BABD;
-								@endif
-							}
 							.text {
 								font-size: 20px;
 								font-weight: 500;
@@ -84,7 +142,7 @@ Dashboard
 						</style>
 						<script>
 							let circularProgress{{$task->id}} = document.querySelector(".circular-progress{{$task->id}}"),
-    						progressValue{{$task->id}} = document.querySelector(".progress-value{{$task->id}}");
+							progressValue{{$task->id}} = document.querySelector(".progress-value{{$task->id}}");
 							
 							let progressInitialValue{{$task->id}} =	0,    
 							progressFinalValue{{$task->id}} = {{$diff->days}},  
@@ -109,7 +167,17 @@ Dashboard
 					</div>
 					<br>
 					<span class="text">Remaining days for : 
-						<span class="task-name">
+						<span class="task-name" 
+						style="
+						text-decoration: solid underline;
+								@if($diff->days < 10)
+									color: #ff0000 !important; 
+								@elseif($diff->days < 20)
+									color: #FFA500 !important;
+								@else
+									color: #40BABD !important;
+								@endif
+						">
 							{{$task->title}}
 						</span></span>
 					</div>
@@ -123,65 +191,9 @@ Dashboard
 				
 			</div>
 		<br>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="main-card mb-3 card">
-					<div class="card-header text-center">Recent tasks
-					</div>
-					<div class="table-responsive">
-						<table class="align-middle mb-0 table table-borderless table-striped table-hover">
-							<thead>
-								<tr class="text-center">
-									<th>#</th>
-									<th>Name</th>
-									<th>Department</th>
-									<th>Status</th>
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								@if($tasks != null && count($tasks) > 0)
-									@foreach($tasks as $task)
-										<tr class="text-center">
-											<td>{{$task->id}}</td>
-											<td>{{$task->title}}</td>
-											<td>{{\App\Models\Department::find($task->dep_id)->name}}</td>
-											<td>
-												@if($task->status == 1)
-													<div class="badge badge-success">Active</div>
-												@else
-													<div class="badge badge-danger">Inactive</div>
-												@endif
-											</td>
-											<td>
-												<button class="btn btn-danger" id="delete-task" data-id='{{ $task->id }}'>Delete</button>
-												<a href="{{ route('admin.task.edit', ['id' => $task->id]) }}" class="btn btn-primary">Edit</a>
-											</td>
-										</tr>
-									@endforeach
-								@else
-									<tr>
-										<td colspan="5" class="text-center">
-											No tasks yet add some <a href="/admin/tasks/add">here</a>
-										</td>
-									</tr>
-								@endif
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="card">
-					<div class="card-body">
-						<canvas id="myChart" height="40px"></canvas>
-					</div>
-				</div>
-			</div>
-		</div>
-		<br>
+		{{-- End Progress Bar --}}
+	
+
 	</div>
 </div>
 
@@ -192,7 +204,7 @@ Dashboard
 @section('footer')
 <script>
 	const ctx = document.getElementById('myChart').getContext('2d');
-	const xValues = ["Employee", "Department", "Task"];
+	const xValues = ["Employees", "Departments", "Tasks"];
 	const yValues = [{{\App\Models\Employee::count()}}, {{\App\Models\Department::count()}}, {{\App\Models\Task::count()}}];
 	const barColors = [
 		"#b91d47",
@@ -206,17 +218,17 @@ Dashboard
 			labels: xValues,
 			datasets: [
 				{
-					label: 'Employee',
+					label: 'Employees',
 					backgroundColor: barColors[0],
 					data: [yValues[0], 0, 0]
 				},
 				{
-					label: 'Department',
+					label: 'Departments',
 					backgroundColor: barColors[1],
 					data: [0, yValues[1], 0]
 				},
 				{
-					label: 'Task',
+					label: 'Tasks',
 					backgroundColor: barColors[2],
 					data: [0, 0, yValues[2]]
 				}
