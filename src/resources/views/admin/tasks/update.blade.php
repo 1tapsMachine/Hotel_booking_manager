@@ -57,7 +57,7 @@
                                         <label for="exampleEmail" class="">Due Date
                                         </label>
                                         <input name="due_date" id="due_date" value="{{ $task->due_date }}" placeholder="" type="date"
-                                            class="form-control">
+                                            class="form-control" min="{{ date('Y-m-d') }}">
                                     </div>
                                     <div class="position-relative form-group">
                                         <label for="exampleEmail" class="">Status</label>

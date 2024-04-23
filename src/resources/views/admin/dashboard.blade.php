@@ -147,8 +147,8 @@ Dashboard
     						progressValue{{$task->id}} = document.querySelector(".progress-value{{$task->id}}");
 							
 							let progressInitialValue{{$task->id}} =	0,    
-							progressFinalValue{{$task->id}} = {{$diff->days}} - 1,  
-							speed{{$task->id}} = 20;
+							progressFinalValue{{$task->id}} = {{$diff->days}},  
+							speed{{$task->id}} = 25;
 							
 							let progress{{$task->id}} = setInterval(() => {
 								progressInitialValue{{$task->id}}++;
@@ -264,23 +264,43 @@ Dashboard
 		type: "bar",
 		data: {
 			labels: xValues,
-			datasets: [{
-				backgroundColor: barColors,
-				data: yValues
-			}]
+			datasets: [
+				{
+					label: 'Employee',
+					backgroundColor: barColors[0],
+					data: [yValues[0], 0, 0]
+				},
+				{
+					label: 'Department',
+					backgroundColor: barColors[1],
+					data: [0, yValues[1], 0]
+				},
+				{
+					label: 'Task',
+					backgroundColor: barColors[2],
+					data: [0, 0, yValues[2]]
+				}
+			]
 		},
 		options: {
 			plugins: {
 				legend: {
-					display: false
+					display: true
 				},
 				title: {
 					display: true,
 					text: 'Total'
 				}
+			},
+			scales: {
+				y: {
+					ticks: {
+						display: false
+					}
+				}
 			}
 		}
-	}); // Corrected this line
+	});
 </script>
 <script>
 $(document).on('click', '#delete-task', function(e) {

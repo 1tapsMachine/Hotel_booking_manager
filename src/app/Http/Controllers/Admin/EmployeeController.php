@@ -32,7 +32,6 @@ class EmployeeController extends Controller
             'phone' => 'required',
             'dob' => 'required',
             'city' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg|max:1024',
         ]);
 
         if ($validation->fails()) {
@@ -42,19 +41,12 @@ class EmployeeController extends Controller
             ]);
         } else {
             $employee = new Employee();
-
-            $filename = "";
-            if ($request->file('image')) {
-                $filename = $request->file('image')->store('employee', 'public');
-            }
-
             $employee->name = $request->name;
             $employee->email = $request->email;
             $employee->dob = $request->dob;
             $employee->city = $request->city;
             $employee->phone = $request->phone;
             $employee->password = Hash::make($request->password);
-            $employee->image = $filename;
 
             $result = $employee->save();
             if ($result) {
@@ -89,7 +81,6 @@ class EmployeeController extends Controller
             'phone' => 'required',
             'dob' => 'required',
             'city' => 'required',
-            'image' => 'nullable|image|mimes:jpg,png,jpeg|max:1024',
         ]);
 
         if ($validation->fails()) {
@@ -100,23 +91,11 @@ class EmployeeController extends Controller
         } else {
             $employee =  Employee::findOrFail($request->id);;
 
-            $filename = "";
-            $path = public_path('storage\\' . $request->old_image);
-            if ($request->file('image')) {
-                if (File::exists($path)) {
-                    File::delete($path);
-                }
-                $filename = $request->file('image')->store('employee', 'public');
-            } else {
-                $filename = $request->old_image;
-            }
-
             $employee->name = $request->name;
             $employee->email = $request->email;
             $employee->dob = $request->dob;
             $employee->city = $request->city;
             $employee->phone = $request->phone;
-            $employee->image = $filename;
 
             $result = $employee->save();
             if ($result) {
@@ -141,10 +120,6 @@ class EmployeeController extends Controller
     {
         $id = $request->id;
         $employee = Employee::findOrFail($id);
-        $path = public_path('storage\\' . $employee->image);
-        if (File::exists($path)) {
-            File::delete($path);
-        }
         $result = $employee->delete();
         if ($result) {
             return response()->json([

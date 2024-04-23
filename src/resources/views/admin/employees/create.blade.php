@@ -47,11 +47,6 @@
                                         <input name="city" id="emp_city" placeholder="Enter Your City" type="text"
                                             class="form-control">
                                     </div>
-
-                                    <div class="position-relative form-group">
-                                        <label for="exampleEmail" class="">Image</label>
-                                        <input name="image" id="emp_image" type="file" class="form-control">
-                                    </div>
                                     <button type="submit" class="mt-1 btn btn-primary">Create</button>
                                 </form>
                             </div>

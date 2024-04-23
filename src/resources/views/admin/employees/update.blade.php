@@ -44,13 +44,6 @@
                                         <input name="city" value="{{ $employee->city }}" id="emp_city" placeholder="Enter Your City" type="text"
                                             class="form-control">
                                     </div>
-
-                                    <div class="position-relative form-group">
-                                        <label for="exampleEmail" class="">Image</label>
-                                        <input name="image" id="emp_image" type="file" class="form-control">
-                                        <img src="{{ asset('storage') }}/{{  $employee->image }}" width="60" alt="">
-                                        <input name="old_image" id="emp_image" type="hidden"  value="{{  $employee->image }}" class="form-control">
-                                    </div>
                                     <button type="submit" class="mt-1 btn btn-primary">Update</button>
                                 </form>
                             </div>
