@@ -67,10 +67,12 @@ Dashboard
 				</div>
 			</div>
 		</div>--}}
-		<div class="row">
+		<div class="row justify-content-center flex-wrap">
+			@forelse($tasks as $task)
+			@if($task->status == 1)
+				
 			<div class="col-md-3 prog-col">
 				<div class="container">
-					@forelse($tasks as $task)
 					<div class="circular-progress{{$task->id}}">
 						<span class="progress-value{{$task->id}}">0%</span>
 						<style>
@@ -87,7 +89,7 @@ Dashboard
 								flex-direction: column;
 								align-items: center;
 							}
-
+							
 							.circular-progress{{$task->id}} {
 								position: relative;
 								height: 250px;
@@ -98,7 +100,7 @@ Dashboard
 								align-items: center;
 								justify-content: center;
 							}
-
+							
 							.circular-progress{{$task->id}}::before {
 								content: "";
 								position: absolute;
@@ -107,7 +109,7 @@ Dashboard
 								border-radius: 50%;
 								background-color: #fff;
 							}
-
+							
 							.progress-value{{$task->id}}{
 								position: relative;
 								font-size: 40px;
@@ -121,39 +123,44 @@ Dashboard
 								color: #606060;
 							}
 						</style>
+						@php
+							$diff = date_diff(date_create(date('Y-m-d')), date_create($task->due_date));
+							$intial_diff = date_diff(date_create(date('Y-m-d')), date_create($task->created_at));
+						@endphp
 						<script>
-							let circularProgress = document.querySelector(".circular-progress{{$task->id}}"),
-    						progressValue = document.querySelector(".progress-value{{$task->id}}");
-
-							let progressInitialValue = 100,    
-								progressFinalValue = 20,  
-								speed = 20;
+							let circularProgress{{$task->id}} = document.querySelector(".circular-progress{{$task->id}}"),
+    						progressValue{{$task->id}} = document.querySelector(".progress-value{{$task->id}}");
 							
-							let progress = setInterval(() => {
-								progressInitialValue--;
-								progressValue.textContent = `${progressInitialValue} DAYS`
-								circularProgress.style.background = `conic-gradient(#40BABD ${progressInitialValue * 3.6}deg, #ededed 0deg)`
-
-								if(progressInitialValue == progressFinalValue){
-									clearInterval(progress);
+							let progressInitialValue{{$task->id}} =	0,    
+							progressFinalValue{{$task->id}} = {{$diff->days}} - 1,  
+							speed{{$task->id}} = 20;
+							
+							let progress{{$task->id}} = setInterval(() => {
+								progressInitialValue{{$task->id}}++;
+								progressValue{{$task->id}}.textContent = `${progressInitialValue{{$task->id}}} DAYS`
+								circularProgress{{$task->id}}.style.background = `conic-gradient(#40BABD ${progressInitialValue{{$task->id}} * 3.6}deg, #ededed 0deg)`
+								
+								if(progressInitialValue{{$task->id}} == progressFinalValue{{$task->id}}){
+									clearInterval(progress{{$task->id}});
 								}    
-							}, speed);
-						</script>
+							}, speed{{$task->id}});
+							</script>
 					</div>
 					<br>
 					<span class="text">Remaining days for : 
 						<span style="color: #40BABD; font-weight: 600;">
 							{{$task->title}}
 						</span></span>
-					@empty
-						
-					@endforelse
+					</div>
 				</div>
+				<div class="col-md-1">		
+				</div>
+				@endif
+				@empty
+				
+				@endforelse
+				
 			</div>
-			<div class="col-md-1">		
-			</div>
-			
-		</div>
 		<br>
 		<div class="row">
 			<div class="col-md-12">
