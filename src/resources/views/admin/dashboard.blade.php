@@ -142,7 +142,7 @@ Dashboard
 						</script>
 					</div>
 					<br>
-					<span class="text">{{$task->title}}</span>
+					<span class="text">remaining days for :{{$task->title}}</span>
 					@empty
 						
 					@endforelse
