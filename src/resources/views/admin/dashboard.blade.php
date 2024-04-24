@@ -28,10 +28,11 @@ Dashboard
 							<tbody>
 								@if($tasks != null && count($tasks) > 0)
 									@foreach($tasks as $task)
+									
 										<tr class="text-center">
 											<td>{{$task->id}}</td>
-											<td>{{$task->title}}</td>
-											<td>{{\App\Models\Department::find($task->dep_id)->name}}</td>
+											<td>{{ ucfirst($task->title) }}</td>
+											<td>{{ \App\Models\Department::find($task->dep_id)->name }}</td>
 											<td>
 												@if($task->status == 1)
 													<div class="badge badge-success">Active</div>
@@ -42,8 +43,10 @@ Dashboard
 											<td>
 												<button class="btn btn-danger" id="delete-task" data-id='{{ $task->id }}'>Delete</button>
 												<a href="{{ route('admin.task.edit', ['id' => $task->id]) }}" class="btn btn-primary">Edit</a>
-											</td>
-										</tr>
+												<a href="{{ route('admin.task.detail', ['id' => $task->id]) }}" class="btn" style="background-color: #FF8C00; color: #fff;">
+													<i class="fa fa-eye" style="font-size: 15px;"></i>
+												</a>										
+											</tr>
 									@endforeach
 								@else
 									<tr>

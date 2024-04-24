@@ -122,4 +122,10 @@ class TaskController extends Controller
             }
         };
     }
+
+
+    public function task_details($id){
+        $task=Task::findOrFail($id);
+        return view('admin.tasks.details',compact('task'));
+    }
 }

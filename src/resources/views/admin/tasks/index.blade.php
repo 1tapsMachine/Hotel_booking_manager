@@ -95,3 +95,48 @@
         })
     </script>
 @endsection
+
+@section('footer')
+    <script>
+        $(document).ready(function() {
+            $('#list_tasks').DataTable();
+        });
+
+        $(document).on('click', '#delete-task', function(e) {
+            e.preventDefault();
+
+            const id = $(this).data('id');
+            if (id != "") {
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('admin.task.delete') }}",
+                    data: {
+                        id,
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: 'json',
+                    success: (data) => {
+                        if (data.success == true) {
+                            Swal.fire({
+						title: 'Success',
+						text: data.message,
+						icon: 'success',
+						confirmButtonText: 'Ok'
+					}).then(() => {
+						window.location.href = "{{ route('admin.dashboard') }}"
+					})
+                        } else {
+                            Swal.fire({
+                                title: 'Error',
+                                text: data.message,
+                                icon: 'error',
+                                confirmButtonText: 'Ok'
+                            })
+                        }
+                    }
+                })
+            }
+        })
+    </script>
+@endsection
+

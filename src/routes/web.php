@@ -45,6 +45,7 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/tasks/delete', [TaskController::class, 'delete'])->name('admin.task.delete');
         Route::get('/tasks/edit/{id}', [TaskController::class, 'edit'])->name('admin.task.edit');
         Route::post('/tasks/update', [TaskController::class, 'update'])->name('admin.task.update');
+        Route::get('task/detail/{id}', [TaskController::class, 'task_details'])->name('admin.task.detail');
 
 
         // department routes
@@ -64,5 +65,14 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::post('/admin/delete', [AdminController::class, 'delete'])->name('admin.admin.delete');
         Route::get('/admin/edit/{id}', [AdminController::class, 'edit'])->name('admin.admin.edit');
         Route::post('/admin/update', [AdminController::class, 'update'])->name('admin.admin.update');
+    });
+});
+
+
+//User routes
+Route::middleware(['auth:user'])->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
+
     });
 });
