@@ -65,10 +65,19 @@ Dashboard
 
 		{{-- Chart --}}
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-5">
 				<div class="card">
 					<div class="card-body">
-						<canvas id="myChart" height="40px"></canvas>
+						<canvas id="myChart" height="300px"></canvas>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-5">
+				<div class="card">
+					<div class="card-body">
+						<canvas id="myChart2" height="150px"></canvas>
 					</div>
 				</div>
 			</div>
@@ -254,6 +263,44 @@ Dashboard
 					ticks: {
 						display: false
 					}
+				}
+			}
+		}
+	});
+</script>
+<script>
+	const ctx2 = document.getElementById('myChart2').getContext('2d');
+	//departements used chart
+	const xValues2 = [
+		@foreach($departements as $department)
+            "{{ $department->name }}",
+        @endforeach
+	];
+	const yValues2 = [
+		@foreach($departements as $department)
+			{{ \App\Models\Task::where('dep_id', $department->id)->count()}},
+		@endforeach
+	];
+
+	new Chart(ctx2, {
+		type: "pie",
+		data: {
+			labels: xValues2,
+			datasets: [
+				{
+					data: yValues2,
+				}
+			]
+		},
+
+		options: {
+			plugins: {
+				legend: {
+					display: true
+				},
+				title: {
+					display: true,
+					text: 'Projects by Departments'
 				}
 			}
 		}
