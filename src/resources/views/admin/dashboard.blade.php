@@ -92,7 +92,7 @@ Dashboard
 			@forelse($tasks as $task)
 			@if($task->status == 1)
 				
-			<div class="col-md-3 prog-col">
+			<div class="col-md-3 prog-col mb-4">
 				<div class="container">
 					<div class="circular-progress{{$task->id}}">
 						<span class="progress-value{{$task->id}}">0%</span>
@@ -204,7 +204,7 @@ Dashboard
 				@endforelse
 				
 			</div>
-		<br>
+			<br>
 		{{-- End Progress Bar --}}
 	
 
@@ -300,9 +300,18 @@ Dashboard
 				},
 				title: {
 					display: true,
-					text: 'Projects by Departments'
-				}
-			}
+					text: 'Tasks by Departments'
+				},
+				tooltip: {
+                    callbacks: {
+                        label: function(context) {
+						const label = context.label.charAt(0).toUpperCase() + context.label.slice(1).toLowerCase();
+						const value = context.parsed;
+						return `${label}'s departement tasks: ${value}`;
+                        }
+                    }
+                }
+			},
 		}
 	});
 </script>
