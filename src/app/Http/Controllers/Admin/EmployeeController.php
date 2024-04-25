@@ -24,14 +24,23 @@ class EmployeeController extends Controller
     }
     public function create(Request $request)
     {
-        $validation = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email|unique:employees',
-            'password' => 'required',
-            'phone' => 'required',
-            'dob' => 'required',
-            'city' => 'required',
-        ]);
+            $validation = Validator::make($request->all(), [
+                'name' => 'required',
+                'email' => [
+                    'required',
+                    'email',
+                    'unique:employees',
+                    function ($attribute, $value, $fail) {
+                        if (\App\Models\Admin::where('email', $value)->exists()) {
+                            $fail('The ' . $attribute . ' is already in use.');
+                        }
+                    },
+                ],
+                'password' => 'required',
+                'phone' => 'required',
+                'dob' => 'required',
+                'city' => 'required',
+            ]);
         
         if ($validation->fails()) {
             return response()->json([
@@ -76,7 +85,16 @@ class EmployeeController extends Controller
     {
         $validation = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => [
+                'required',
+                'email',
+                'unique:employees',
+                function ($attribute, $value, $fail) {
+                    if (\App\Models\Admin::where('email', $value)->exists()) {
+                        $fail('The ' . $attribute . ' is already in use.');
+                    }
+                },
+            ],
             'phone' => 'required',
             'dob' => 'required',
             'city' => 'required',
