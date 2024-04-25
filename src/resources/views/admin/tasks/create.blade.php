@@ -43,8 +43,7 @@
                                     </div>
                                     <div class="position-relative form-group">
                                         <label for="exampleEmail" class="">Due Date</label>
-                                        <input name="due_date" id="due_date" placeholder="" type="date" class="form-control" min="{{ date('Y-m-d') }}">
-                                    </div>
+                                        <input name="due_date" id="due_date" placeholder="" type="date" class="form-control" min="{{ date('Y-m-d', strtotime('+1 day')) }}">
                                     <div class="position-relative form-group">
                                         <label for="exampleEmail" class="">Status</label>
                                         <select name="status" id="status" class="form-control">
