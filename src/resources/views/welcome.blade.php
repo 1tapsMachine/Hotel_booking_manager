@@ -680,13 +680,10 @@
 					<div class="item item-1 col-md-4 col-12">
 						<div class="item-inner">
 							<h3 class="item-heading">
-								User<br /><span class="item-heading-desc"
-									>(Manager Required)</span
-								>
+								AgileSphere Account
 							</h3>
 							<div class="price-figure">
-								<span class="number">Log-in</span
-								><span class="currency">*</span>
+								<span class="number">FREE</span>
 							</div>
 							<!--//price-figure-->
 							<ul class="list-unstyled mb-3">
@@ -694,49 +691,13 @@
 									<i class="fa-solid fa-check"></i> Track tasks and projects in real-time
 								</li>
 								<li class="mb-2">
-									<i class="fa-solid fa-check"></i> Task management
+									<i class="fa-solid fa-check"></i> Efficient task management
 								</li>
 								<li class="mb-2">
-									<i class="fa-solid fa-times"></i> User accounts management
-								</li>
-								<li class="mb-2" style="
-								font-size: 0.58rem;
-								padding-top: 10px;
-								">
-									<i class="fa-solid fa-asterisk"></i> User account should be created by a manager
+									<i class="fa-solid fa-check"></i> User-friendly interface
 								</li>
 							</ul>
 							<a class="btn btn-inverse btn-cta" href="/login">Get in now</a>
-						</div>
-						<!--//item-inner-->
-					</div>
-					<!--//item-->
-					<div class="item item-2 col-md-4 col-12">
-						<div class="item-inner">
-							<h3 class="item-heading">
-								Manager Account<br /><span class="item-heading-desc"
-									>(Issued by an Administrator)</span
-								>
-							</h3>
-
-							<div class="price-figure">
-								<span class="number">Log-in</span>
-							</div>
-							<!--//price-figure-->
-							<ul class="list-unstyled mb-3">
-								<li class="mb-2">
-									<i class="fa-solid fa-check"></i> Track tasks and projects in real-time
-								</li>
-								<li class="mb-2">
-									<i class="fa-solid fa-check"></i> Task management
-								</li>
-								<li class="mb-2">
-									<i class="fa-solid fa-check"></i> User accounts management
-								</li>
-							</ul>
-							<a class="btn btn-inverse btn-cta" href="/login" style="
-							margin-top: 29px;
-							">Get in now</a>
 						</div>
 						<!--//item-inner-->
 					</div>
@@ -745,8 +706,7 @@
 				<!--//pricing-wrapper-->
 			</div>
 			<!--//container-->
-		</div>
-		<!--//pricing-section-->
+		</div>		<!--//pricing-section-->
 		<div id="contact" class="contact-section">
 			<div class="container text-center">
 				<h2 class="section-title">Contact Us</h2>

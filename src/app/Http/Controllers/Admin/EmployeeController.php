@@ -32,7 +32,7 @@ class EmployeeController extends Controller
             'dob' => 'required',
             'city' => 'required',
         ]);
-
+        
         if ($validation->fails()) {
             return response()->json([
                 'success' => false,
@@ -59,7 +59,7 @@ class EmployeeController extends Controller
                 return response()->json([
                     "success" => false,
                     'message' => [
-                        'Employee Not Create Successfully'
+                        'Failed to Create Employee'
                     ]
                 ]);
             }
