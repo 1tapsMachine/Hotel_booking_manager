@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function index(): View
     {
-        return view("admin.auth.login");
+        return view("login");
     }
 
 
@@ -21,7 +21,7 @@ class LoginController extends Controller
         $password = $request->password;
 
         $admin = Auth::guard('admin')->attempt(['email' => $email, 'password' => $password]);
-        $employee = Auth::guard('employee')->attempt(['email' => $email, 'password' => $password]);
+        $employee = Auth::guard('user')->attempt(['email' => $email, 'password' => $password]);
         if ($admin)
         {    
             return redirect()->route('admin.dashboard');
@@ -38,6 +38,7 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
+        Auth::guard('user')->logout();
         return view("welcome");
     }
 }

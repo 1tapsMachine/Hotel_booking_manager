@@ -28,7 +28,7 @@
 					<img src="../assets/images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" action="/admin/login/post" method="POST">
+				<form class="login100-form validate-form" action="login/post" method="POST">
 					@csrf
 					<span class="login100-form-title">
 						Login

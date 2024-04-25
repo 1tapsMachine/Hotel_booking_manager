@@ -706,7 +706,7 @@
 									<i class="fa-solid fa-asterisk"></i> User account should be created by a manager
 								</li>
 							</ul>
-							<a class="btn btn-inverse btn-cta" href="/admin/login">Get in now</a>
+							<a class="btn btn-inverse btn-cta" href="/login">Get in now</a>
 						</div>
 						<!--//item-inner-->
 					</div>
@@ -734,7 +734,7 @@
 									<i class="fa-solid fa-check"></i> User accounts management
 								</li>
 							</ul>
-							<a class="btn btn-inverse btn-cta" href="/admin/login" style="
+							<a class="btn btn-inverse btn-cta" href="/login" style="
 							margin-top: 29px;
 							">Get in now</a>
 						</div>

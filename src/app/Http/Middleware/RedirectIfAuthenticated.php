@@ -26,10 +26,13 @@ class RedirectIfAuthenticated
                 if($guard == 'admin'){
                     return redirect(RouteServiceProvider::ADMIN);
                 }
+                elseif($guard == 'user')
+                {
+                    return redirect(RouteServiceProvider::USER);
+                }
                 return redirect(RouteServiceProvider::HOME);
             }
         }
-
         return $next($request);
     }
 }

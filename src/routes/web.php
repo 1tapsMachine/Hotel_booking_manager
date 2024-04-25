@@ -19,15 +19,19 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 
 // Admin routes
-Route::prefix('admin')->group(function () {
-    Route::middleware(['guest:admin'])->group(function () {
-        Route::get('/login', [LoginController::class, 'index'])->name('admin.auth.login');
-        Route::post('/login/post', [LoginController::class, 'login'])->name('admin.login');
-    });
+Route::middleware(['guest:admin'])->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('admin.auth.login');
+    Route::post('/login/post', [LoginController::class, 'login'])->name('admin.login');
+});
+
+// user routes
+Route::middleware(['guest:user'])->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('admin.auth.login');
+    Route::post('/login/post', [LoginController::class, 'login'])->name('admin.login');
 });
 Route::middleware(['auth:admin'])->group(function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'Adminindex'])->name('admin.dashboard');
 
         // employee routes
         Route::get('/employee/list', [EmployeeController::class, 'index'])->name('admin.employee.list');
@@ -72,7 +76,7 @@ Route::middleware(['auth:admin'])->group(function () {
 //User routes
 Route::middleware(['auth:user'])->group(function () {
     Route::prefix('user')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'Userindex'])->name('user.dashboard');
 
     });
 });
