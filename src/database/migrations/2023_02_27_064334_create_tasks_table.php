@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('date');
             $table->string('due_date');
             $table->integer('status');
+            $table->string('progress')->default(0);
             $table->timestamps();
         });
     }
