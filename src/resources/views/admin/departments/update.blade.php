@@ -26,7 +26,7 @@ Update Department
                                     <select name="employee[]" id="employee_id" class="form-control" multiple style="height: 60px;">
                                         <option value="" hidden>Select Employee</option>
                                         @foreach ($employees as $employee)
-                                            @if (in_array($employee->id, json_decode($department->emp_list)))
+                                            @if (in_array($employee->id, $department->employees->pluck('id')->toArray()))
                                                 <option value="{{ $employee->id }}" selected>{{ $employee->name }}</option>
                                             @else
                                                 <option value="{{ $employee->id }}">{{ $employee->name }}</option>
@@ -34,8 +34,8 @@ Update Department
                                         @endforeach
                                     </select>
                                 </div>
-                                </div>
                                 <button type="submit" class="mt-1 btn btn-primary">Update</button>
+                                </div>
                             </form>
                         </div>
                     </div>

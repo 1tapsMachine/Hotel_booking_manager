@@ -29,18 +29,20 @@ List of Department
                                 <td>{{ $department->id }}</td>
                                 <td>{{ $department->name }}</td>
                                 <td>
-                                    @foreach ( json_decode($department->emp_list) as $employee_id)
-                                    {{
-                                    // get employee name from employee id
-                                    \App\Models\Employee::find($employee_id)->name
-                                    }}
-                                    ,
+                                    @foreach ($department->employees as $employee)
+                                    {{ $employee->name }},
                                     @endforeach
                                 </td>
-                                <td><button class="btn btn-danger" id="delete-department"
+                                <td>
+                                    @if ($department->name != "Non-Assigned")
+                                    <button class="btn btn-danger" id="delete-department"
                                         data-id='{{ $department->id }}'>Delete</button>
                                     <a href="{{ route('admin.department.edit', ['id'=>$department->id]) }}"
                                         class="btn btn-primary">Edit</a>
+
+                                    @else
+                                    -
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

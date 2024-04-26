@@ -107,7 +107,7 @@
                                     </div>
                                 </div>
                                 <div class="widget-content-left  ml-3 header-user-info">
-                                    <div class="widget-heading pe-7s-users">
+                                    <div class="widget-heading pe-7s-portfolio">
                                         {{auth()->user()->name}}
                                     </div>
                                     <div class="widget-subheading">
@@ -166,87 +166,15 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="metismenu-icon pe-7s-add-user"></i>
-                                    Employee
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul class="mm-collapse">
-                                    <li>
-                                        <a href="{{ route('admin.employee.list') }}" class="mm-active">
-                                            <i class="metismenu-icon pe-7s-rocket"></i>
-                                            List
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.employee.add') }}" class="mm-active">
-                                            <i class="metismenu-icon pe-7s-rocket"></i>
-                                            Add New
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="#">
                                     <i class="metismenu-icon pe-7s-timer"></i>
                                     Task
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul class="mm-collapse">
                                     <li>
-                                        <a href="{{ route('admin.task.list') }}" class="mm-active">
+                                        <a href="{{ route('user.task.list') }}" class="mm-active">
                                             <i class="metismenu-icon pe-7s-rocket"></i>
                                             List
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.task.add') }}" class="mm-active">
-                                            <i class="metismenu-icon pe-7s-rocket"></i>
-                                            Add New
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon pe-7s-network"></i>
-                                    Department
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul class="mm-collapse">
-                                    <li>
-                                        <a href="{{ route('admin.department.list') }}" class="mm-active">
-                                            <i class="metismenu-icon pe-7s-rocket"></i>
-                                            List
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.department.add') }}" class="mm-active">
-                                            <i class="metismenu-icon pe-7s-rocket"></i>
-                                            Add New
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <i class="metismenu-icon  pe-7s-culture"></i>
-                                    Managers
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                                <ul class="mm-collapse">
-                                    <li>
-                                        <a href="{{ route('admin.admin.list') }}" class="mm-active">
-                                            <i class="metismenu-icon pe-7s-rocket"></i>
-                                            List
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.admin.add') }}" class="mm-active">
-                                            <i class="metismenu-icon pe-7s-rocket"></i>
-                                            Add New
                                         </a>
                                     </li>
                                 </ul>

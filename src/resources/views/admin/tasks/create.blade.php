@@ -20,8 +20,11 @@
                                         <select name="departement" id="departement" class="form-control">
                                             <option value="" hidden>Select Departement</option>
                                            @forelse ($departments as $department)
-                                            <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                               
+                                                @if($department->name != "Non-Assigned")
+                                                <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                                @elseif($department->name == "Non-Assigned")
+                                                <option value="" disabled>Non-Assigned</option>
+                                                @endif                                            
                                            @empty
                                             <option value="" disabled>Departement list not found</option>
                                                

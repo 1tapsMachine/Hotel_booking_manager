@@ -12,9 +12,14 @@ use Illuminate\Support\Facades\Validator;
 class TaskController extends Controller
 {
 
-    public function index(){
+    public function AdminIndex(){
         $tasks=Task::latest()->get();
         return view('admin.tasks.index',compact('tasks'));
+    }
+    public function UserIndex(){
+        $tasks=Task::latest()->get();
+        $employee = Employee::find(auth()->user()->id);
+        return view('user.tasks.index', compact('tasks', 'employee'));
     }
 
     public function add()

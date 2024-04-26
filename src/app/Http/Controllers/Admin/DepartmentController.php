@@ -38,9 +38,10 @@ class DepartmentController extends Controller
         } else {
             $departments = new Department();
             $departments->name = $request->name;
-            $departments->emp_list = json_encode($request->input('employee'));
             $departments->save();
-
+            foreach ($request->employee as $emp) {
+                Employee::where('id', $emp)->update(['dep_id' => $departments->id]);
+            }
             return response()->json([
                 'success' => true,
                 'message' => ['department add successfully']
@@ -69,9 +70,19 @@ class DepartmentController extends Controller
         } else {
             $departments = Department::findOrFail($request->id);
             $departments->name = $request->name;
-            $departments->emp_list = json_encode($request->input('employee'));
             $departments->save();
+            if ($request->employee) {
+                foreach ($request->employee as $emp) {
+                    Employee::where('id', $emp)->update(['dep_id' => $departments->id]);
+                }
+            }
 
+            foreach ($employees = Employee::where('dep_id', $request->id)->get() as $removed_emp) {
+                $employeeIds = $request->employee ?? [];
+                if (!in_array($removed_emp->id, $employeeIds) & $removed_emp->dep_id == $departments->id) {
+                    Employee::where('id', $removed_emp->id)->update(['dep_id' => 1]);
+                }
+            }
             return response()->json([
                 'success' => true,
                 'message' => ['department Update successfully']
@@ -81,6 +92,9 @@ class DepartmentController extends Controller
 
     public function delete(Request $request)
     {
+        foreach ($employees = Employee::where('dep_id', $request->id)->get() as $emp) {
+            Employee::where('id', $emp->id)->update(['dep_id' => 1]);
+        }
         $departments = Department::findOrFail($request->id)->delete();
         return response()->json([
             'success' => true,

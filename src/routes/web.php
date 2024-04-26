@@ -43,7 +43,7 @@ Route::middleware(['auth:admin'])->group(function () {
 
 
         // Task routes
-        Route::get('/tasks/list', [TaskController::class, 'index'])->name('admin.task.list');
+        Route::get('/tasks/list', [TaskController::class, 'AdminIndex'])->name('admin.task.list');
         Route::get('/tasks/add', [TaskController::class, 'add'])->name('admin.task.add');
         Route::post('/tasks/create', [TaskController::class, 'create'])->name('admin.task.create');
         Route::post('/tasks/delete', [TaskController::class, 'delete'])->name('admin.task.delete');
@@ -77,6 +77,6 @@ Route::middleware(['auth:admin'])->group(function () {
 Route::middleware(['auth:user'])->group(function () {
     Route::prefix('user')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'Userindex'])->name('user.dashboard');
-
+        Route::get('/tasks/list', [TaskController::class, 'UserIndex'])->name('user.task.list');
     });
 });

@@ -49,6 +49,7 @@ class EmployeeController extends Controller
             ]);
         } else {
             $employee = new Employee();
+            $employee->dep_id = 1;
             $employee->name = $request->name;
             $employee->email = $request->email;
             $employee->dob = $request->dob;
@@ -106,14 +107,13 @@ class EmployeeController extends Controller
                 'message' => $validation->errors()->all()
             ]);
         } else {
-            $employee =  Employee::findOrFail($request->id);;
-
+            $employee =  Employee::findOrFail($request->id);
+            $employee->dep_id = 1;
             $employee->name = $request->name;
             $employee->email = $request->email;
             $employee->dob = $request->dob;
             $employee->city = $request->city;
             $employee->phone = $request->phone;
-
             $result = $employee->save();
             if ($result) {
                 return response()->json([

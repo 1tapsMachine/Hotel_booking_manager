@@ -273,12 +273,16 @@ Dashboard
 	//departements used chart
 	const xValues2 = [
 		@foreach($departements as $department)
+		@if($department->name != "Non-Assigned")
             "{{ $department->name }}",
+		@endif
         @endforeach
 	];
 	const yValues2 = [
 		@foreach($departements as $department)
+		@if($department->name != "Non-Assigned")
 			{{ \App\Models\Task::where('dep_id', $department->id)->count()}},
+		@endif
 		@endforeach
 	];
 

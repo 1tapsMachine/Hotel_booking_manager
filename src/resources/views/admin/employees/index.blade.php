@@ -22,7 +22,7 @@ List of Employees
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Image</th>
+                                    <th>Departement</th>
                                     <th>City</th>
                                     <th>Action</th>
                                 </tr>
@@ -33,7 +33,7 @@ List of Employees
                                 <td>{{ $employee->name }}</td>
                                 <td>{{ $employee->email }}</td>
                                 <td>{{ $employee->phone }}</td>
-                                <td><img src="{{ asset('storage') }}/{{ $employee->image }}" width="60" alt=""></td>
+                                <td>{{ $employee->department->name }}</td>
                                 <td>{{ $employee->city }}</td>
                                 <td><button class="btn btn-danger" id="delete-employee"
                                         data-id='{{ $employee->id }}'>Delete</button>

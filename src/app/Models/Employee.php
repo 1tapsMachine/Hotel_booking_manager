@@ -23,8 +23,8 @@ class Employee extends Authenticatable
         'remember_token',
     ];
 
-    public function tasks()
+    public function department()
     {
-        return $this->hasMany(Task::class);
+        return $this->belongsTo(Department::class, 'dep_id');
     }
 }

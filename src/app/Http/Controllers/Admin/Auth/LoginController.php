@@ -28,7 +28,7 @@ class LoginController extends Controller
         }
         elseif ($employee)
         {
-            echo 2;
+            return redirect()->route('user.dashboard');
         } 
         else {
             echo 0;
