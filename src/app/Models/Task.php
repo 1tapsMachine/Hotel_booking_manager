@@ -9,7 +9,8 @@ class Task extends Model
 {
     use HasFactory;
 
-    public function employee(){
-        return $this->belongsTo(Employee::class,'emp_id');
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'dep_id');
     }
 }
