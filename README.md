@@ -8,9 +8,9 @@ Develop a comprehensive Task Management System to facilitate efficient task plan
 ## Diagrams :
 
 1. **Use case :**
-![Use case diagram](https://ibb.co/G9M684k)
+https://ibb.co/G9M684k
 2. **Class Diagram :**
-![Class diagram](https://ibb.co/z80g5y4)
+https://ibb.co/z80g5y4
 ## Key Features
 
 1. **User Authentication:**
