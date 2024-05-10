@@ -23,15 +23,15 @@ class EmployeeController extends Controller
         return view('admin.employees.create');
     }
     public function create(Request $request)
-    {
+    {       
             $validation = Validator::make($request->all(), [
                 'name' => 'required',
                 'email' => [
                     'required',
                     'email',
                     'unique:employees',
-                    function ($attribute, $value, $fail) {
-                        if (\App\Models\Admin::where('email', $value)->exists()) {
+                    function ($attribute, $value, $fail, $currentMail) {
+                        if (\App\Models\Admin::where('email', $value)->exists()){
                             $fail('The ' . $attribute . ' is already in use.');
                         }
                     },
@@ -89,9 +89,8 @@ class EmployeeController extends Controller
             'email' => [
                 'required',
                 'email',
-                'unique:employees',
                 function ($attribute, $value, $fail) {
-                    if (\App\Models\Admin::where('email', $value)->exists()) {
+                    if (\App\Models\Admin::where('email', $value)->exists()){
                         $fail('The ' . $attribute . ' is already in use.');
                     }
                 },
@@ -108,7 +107,6 @@ class EmployeeController extends Controller
             ]);
         } else {
             $employee =  Employee::findOrFail($request->id);
-            $employee->dep_id = 1;
             $employee->name = $request->name;
             $employee->email = $request->email;
             $employee->dob = $request->dob;

@@ -133,4 +133,10 @@ class TaskController extends Controller
         $task=Task::findOrFail($id);
         return view('admin.tasks.details',compact('task'));
     }
+
+
+    public function task_progress($id){
+        $task=Task::findOrFail($id);
+        return view('admin.tasks.progress',compact('task'));
+    }
 }

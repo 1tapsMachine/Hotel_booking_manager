@@ -78,5 +78,6 @@ Route::middleware(['auth:user'])->group(function () {
     Route::prefix('user')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'Userindex'])->name('user.dashboard');
         Route::get('/tasks/list', [TaskController::class, 'UserIndex'])->name('user.task.list');
+        Route::get('/task/progress/{id}', [TaskController::class, 'task_progress'])->name('user.task.progress');
     });
 });
