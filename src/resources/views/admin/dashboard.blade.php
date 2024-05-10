@@ -36,6 +36,8 @@ Dashboard
 											<td>
 												@if($task->status == 1)
 													<div class="badge badge-success">Active</div>
+												@elseif($task->status == 2)
+													<div class="btn btn-primary">Done</div>
 												@else
 													<div class="badge badge-danger">Inactive</div>
 												@endif
