@@ -29,10 +29,6 @@
                                     </tr>
                                 </thead>
 								@foreach ($tasks as $task)
-										<p>
-											{{$task->dep_id}} : task
-											{{$employee->dep_id}} : employee
-										</p>
 										<tr>
 											<td>{{ $task->id }}</td>
 											<td>{{ \App\Models\Department::find($task->dep_id)->name }}</td>
