@@ -39,16 +39,6 @@ Details of Task N°: {{ $task->id }}
 							<th>Due Date</th>
 							<td>{{ $task->due_date }}</td>
 						</tr>
-						<tr>
-							<th>Progress</th>
-							<td>
-								<div class="progress">
-									<div class="progress-bar" role="progressbar" style="width: {{ $task->progress }}%"
-										aria-valuenow="{{ $task->progress }}" aria-valuemin="0" aria-valuemax="100">
-										{{ $task->progress }}%
-									</div>
-								</div>
-							</td>
 					</table>
 				</div>		
 			</div>

@@ -46,11 +46,16 @@ Task "{{$task->title}}" Progress
 								<div class="progress">
 									<div class="progress-bar" role="progressbar" style="width: {{ $task->progress }}%"
 										aria-valuenow="{{ $task->progress }}" aria-valuemin="0" aria-valuemax="100">
-										{{ $task->progress }}%
 									</div>
 								</div>
+								<style>
+									.progress {
+										width: 100%;
+										height: 30px;
+										border: 1px solid #000;
+									}
+								</style>
 							</td>
-
 						</tr>
 					</table>
 				</div>
@@ -61,18 +66,20 @@ Task "{{$task->title}}" Progress
 				<div class="card-header text-center">
 					Actions
 				</div>
-				<div class="card-body d-flex flex-column align-items-center justify-content-center" style="height: 240px;">
-					<h5 class="mb-1" style="color: #888;">Task Description :</h5>
-					<textarea name="description" id="description" class="form-control" rows="3" placeholder="Task Description" disabled>
-						{{ $task->content }}
-					</textarea>
+				<div class="card-body d-flex flex-column align-items-center justify-content-center"
+					style="height: 240px;">
 					<h5 class="" style="color: #888;">Days Remaining :</h5>
 					<h1 style="font-size: 2.5rem; color: #333;">
 						@php
-							$days = date_diff(date_create(date('Y-m-d')), date_create($task->due_date));
+						$days = date_diff(date_create(date('Y-m-d')), date_create($task->due_date));
 						@endphp
 						{{ $days->days }}
 					</h1>
+					<h5 class="mb-1" style="color: #888;">Task Description :</h5>
+					<textarea name="description" id="description" class="form-control" rows="3"
+						placeholder="Task Description" disabled>
+						{{ $task->content }}
+					</textarea>
 				</div>
 				<div class="card-footer text-center w-100">
 					<form action="" method="POST" id="progress_edit" class="w-100">
@@ -80,10 +87,11 @@ Task "{{$task->title}}" Progress
 						<div class="form-group d-flex align-items-center w-100">
 							<label for="progress" class="mr-3 flex-grow-1">Edit Progress :</label>
 							<input type="hidden" name="task_id" value="{{ $task->id }}">
-							<input type="number" name="progress" id="progress" class="form-control" min="0" max="100" value="{{ $task->progress }}">
-						</div>						
+							<input type="number" name="progress" id="progress" class="form-control" min="0" max="100"
+								value="{{ $task->progress }}">
+						</div>
 						<button type="submit" class="btn btn-primary" id="#edit">Update</button>
-					</form>				
+					</form>
 				</div>
 			</div>
 		</div>
