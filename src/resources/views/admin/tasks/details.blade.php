@@ -44,16 +44,47 @@ Details of Task N°: {{ $task->id }}
 					Actions
 				</div>
 				<div class="card-body d-flex flex-column align-items-center" style="height: 350px;">
-					<!-- Pie chart -->
-					<canvas id="myChart"></canvas>
+					{{-- progress bar --}}
+					<h3>
+						Progress of the task N°: {{ $task->id }}
+					</h3>
+					<span id="progress">
+						{{ $task->progress }}%
+					</span>
+					<style>
+						#progress {
+							font-size: 10vh;
+							font-weight: bold;
+							color: {{ $task->progress >= 75 ? 'green' : ($task->progress >= 50 ? 'orange' : 'red') }};
 
+						}
+						.progress {
+							width: 100%;
+							height: 30px;
+							border: 1px solid #000;
+						}
+					</style>
+					<div class="progress" style="height: 30px;">
+						<div class="progress-bar 
+							{{ $task->progress >= 75 ? 'bg-success' : ($task->progress >= 50 ? 'bg-warning' : 'bg-danger') }}" 
+							role="progressbar" 
+							style="width: {{ $task->progress }}%;" 
+							aria-valuenow="{{ $task->progress }}" 
+							aria-valuemin="0" 
+							aria-valuemax="100">
+						</div>
+					</div>
 					<!-- Buttons -->
 					<div class="mt-auto text-center">
+						@if($task->status == 2)
+						<button class="btn btn-danger" id="delete-task" data-id='{{ $task->id }}'>Delete</button>
+						@else
 						<a href="{{ route('admin.task.edit', $task->id) }}" class="btn btn-primary">Edit</a>
 						<form action="{{ route('admin.task.delete') }}" method="POST" style="display: inline;">
 							@csrf
 							<button class="btn btn-danger" id="delete-task" data-id='{{ $task->id }}'>Delete</button>
 						</form>
+						@endif
 					</div>
 				</div>
 			</div>
@@ -102,58 +133,6 @@ Details of Task N°: {{ $task->id }}
                 })
             }
         })
-</script>
-<script>
-	const ctx = document.getElementById('myChart').getContext('2d');
-	const xValues = ["Employees", "Departments", "Tasks"];
-	const yValues = [{{\App\Models\Employee::count()}}, {{\App\Models\Department::count()}}, {{\App\Models\Task::count()}}];
-	const barColors = [
-		"#b91d47",
-		"#00aba9",
-		"#2b5797",
-		"#e8c3b9"
-	];
-	new Chart(ctx, {
-		type: "bar",
-		data: {
-			labels: xValues,
-			datasets: [
-				{
-					label: 'Employees',
-					backgroundColor: barColors[0],
-					data: [yValues[0], 0, 0]
-				},
-				{
-					label: 'Departments',
-					backgroundColor: barColors[1],
-					data: [0, yValues[1], 0]
-				},
-				{
-					label: 'Tasks',
-					backgroundColor: barColors[2],
-					data: [0, 0, yValues[2]]
-				}
-			]
-		},
-		options: {
-			plugins: {
-				legend: {
-					display: true
-				},
-				title: {
-					display: true,
-					text: 'Total'
-				}
-			},
-			scales: {
-				y: {
-					ticks: {
-						display: false
-					}
-				}
-			}
-		}
-	});
 </script>
 
 @endsection

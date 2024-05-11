@@ -43,11 +43,18 @@ Dashboard
 												@endif
 											</td>
 											<td>
+												@if($task->status == 2)
+												<button class="btn btn-danger" id="delete-task" data-id='{{ $task->id }}'>Delete</button>
+												<a href="{{ route('admin.task.detail', ['id' => $task->id]) }}" class="btn" style="background-color: #FF8C00; color: #fff;">
+													<i class="fa fa-eye" style="font-size: 15px;"></i>
+												</a>	
+												@else	
 												<button class="btn btn-danger" id="delete-task" data-id='{{ $task->id }}'>Delete</button>
 												<a href="{{ route('admin.task.edit', ['id' => $task->id]) }}" class="btn btn-primary">Edit</a>
 												<a href="{{ route('admin.task.detail', ['id' => $task->id]) }}" class="btn" style="background-color: #FF8C00; color: #fff;">
 													<i class="fa fa-eye" style="font-size: 15px;"></i>
-												</a>										
+												</a>														
+												@endif								
 											</tr>
 									@endforeach
 								@else
@@ -92,6 +99,17 @@ Dashboard
 		{{-- Progress Bar --}}
 		<div class="row justify-content-center flex-wrap">
 			@forelse($tasks as $task)
+			@if($task->due_date <= $task->created_at)
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<script>
+				$(document).ready(function() {
+					$.ajax({
+						url: "{{ route('task.disable', ['id' => $task->id]) }}",
+						type: 'GET'
+					});
+				});
+			</script>		
+			@endif
 			@if($task->status == 1)
 				
 			<div class="col-md-3 prog-col mb-4">
@@ -205,8 +223,8 @@ Dashboard
 				
 				@endforelse
 				
-			</div>
-			<br>
+		</div>
+		<br>
 		{{-- End Progress Bar --}}
 	
 

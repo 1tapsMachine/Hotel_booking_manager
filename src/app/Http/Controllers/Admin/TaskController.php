@@ -137,6 +137,42 @@ class TaskController extends Controller
 
     public function task_progress($id){
         $task=Task::findOrFail($id);
-        return view('admin.tasks.progress',compact('task'));
+        return view('user.tasks.progress',compact('task'));
     }
+
+    public function disable($id){
+        $task=Task::findOrFail($id);
+        $task->status=0;
+        $result=$task->save();
+        if($result){
+            return response()->json([
+                'success'=>true,
+                'message'=>['Task disable Successfully']
+            ]);
+        }else{
+            return response()->json([
+                'success'=>false,
+                'message'=>['Couldn\'t Disable the task']
+            ]);
+        }
+    }
+    public function edit_progress(Request $request){
+        $task=Task::findOrFail($request->task_id);
+        $task ->progress=$request->progress;
+        if($request->progress==100){
+            $task->status=2;
+        }
+        $result=$task->save();
+        if($result){
+            return response()->json([
+                'success'=>true,
+                'message'=>['Task progress updated Successfully']
+            ]);
+        }else{
+            return response()->json([
+                'success'=>false,
+                'message'=>['Couldn\'t update the progress']
+            ]);
+        }
+    }           
 }

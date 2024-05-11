@@ -30,7 +30,7 @@ class EmployeeController extends Controller
                     'required',
                     'email',
                     'unique:employees',
-                    function ($attribute, $value, $fail, $currentMail) {
+                    function ($attribute, $value, $fail) {
                         if (\App\Models\Admin::where('email', $value)->exists()){
                             $fail('The ' . $attribute . ' is already in use.');
                         }

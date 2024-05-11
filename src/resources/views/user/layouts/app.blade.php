@@ -159,25 +159,16 @@
                         <ul class="vertical-nav-menu">
                             <li class="app-sidebar__heading">Dashboards</li>
                             <li>
-                                <a href="/admin/dashboard" class="">
+                                <a href="/user/dashboard" class="">
                                     <i class="metismenu-icon pe-7s-map"></i>
                                     Dashboard
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="/user/tasks/list">
                                     <i class="metismenu-icon pe-7s-timer"></i>
                                     Task
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
-                                <ul class="mm-collapse">
-                                    <li>
-                                        <a href="{{ route('user.task.list') }}" class="mm-active">
-                                            <i class="metismenu-icon pe-7s-rocket"></i>
-                                            List
-                                        </a>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                     </div>

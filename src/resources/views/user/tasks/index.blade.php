@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('user.layouts.app')
 
 @section('title')
     List of Tasks
@@ -41,9 +41,15 @@
 											<td>{{ $task->date }}</td>
 											<td>{{ $task->due_date }}</td>
 											<td>{{ $task->status == 1 ? 'Active' : 'Inactive' }}</td>
-											<td>
-												<a href="" class="btn btn-primary">Edit Progress</a>
+											@if($task->status == 1)
+                                            <td>
+												<a href="/user/task/progress/{{$task->id}}" class="btn btn-primary">Edit Progress</a>
 											</td>
+                                            @else
+                                            <td>
+                                                -
+                                            </td>
+                                            @endif
 										</tr>
 								@endforeach
                             </table>

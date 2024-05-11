@@ -16,7 +16,7 @@ Route::get('/', function () {
 
 // logout
 Route::get('/logout', [LoginController::class, 'logout']);
-
+Route::get('/task/disable/{id}', [TaskController::class, 'disable'])->name('task.disable');
 
 // Admin routes
 Route::middleware(['guest:admin'])->group(function () {
@@ -79,5 +79,6 @@ Route::middleware(['auth:user'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'Userindex'])->name('user.dashboard');
         Route::get('/tasks/list', [TaskController::class, 'UserIndex'])->name('user.task.list');
         Route::get('/task/progress/{id}', [TaskController::class, 'task_progress'])->name('user.task.progress');
+        Route::post('/task/edit_progress/{id}', [TaskController::class, 'edit_progress'])->name('user.task.edit_progress');
     });
 });
